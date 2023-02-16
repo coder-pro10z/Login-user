@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Registration from './pages/Registration';
 import React from 'react';
 import axios from 'axios';
+import './index.css'
 axios.defaults.baseURL='http://localhost:5000'
 axios.defaults.withCredentials=true;
 function App() {

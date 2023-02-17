@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Registration() {
   const [name, setName] = useState('');
@@ -51,8 +52,10 @@ function Registration() {
       <label  className="block text-gray-700 font-bold mb-2" >Password</label>
       <input className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
        type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
-      <button type="submit" className='flex mx-w-md mt-2 w-full justify-center items-center'>Register</button>
+      <button type="submit" className='flex  bg-gray-300 text-black text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center'>Register</button>
     </form>
+    <div className='py-2 text-center text-gray-500'>Already have an account? <Link className='underline text-black' to="/login">Login</Link>
+        </div>
     </div>
 </div>
   );

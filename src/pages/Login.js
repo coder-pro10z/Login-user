@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Navigate } from 'react-router-dom'
+import {Link, Navigate } from 'react-router-dom'
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -27,12 +27,15 @@ function Login() {
     axios.post('http://localhost:5000/api/login', userData)
       .then(res => {
         console.log(res.data);
+        alert("Login Successful");
         // redirect user to home page
     setRedirect(true);
 
       })
       .catch(err => {
         console.log(err);
+        alert("Login Failed");
+
       });
   }
 
@@ -42,7 +45,7 @@ function Login() {
 
   return (
 
-<div className="min-h-screen flex items-center justify-center bg-gray-200 py-12 px-4 sm:px-6 lg:px-8">      
+<div className="min-h-screen flex items-center justify-center bg-gray-200 sm:px-6 lg:px-8">      
     <div className="max-w-md w-full space-y-8">
         <div><h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Log in to your account</h2></div>
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
@@ -62,10 +65,11 @@ function Login() {
             type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             </div>
 
-            <button className='flex mx-w-md w-full justify-center items-center' type="submit">Login</button>
-
+            <button className='flex text-center bg-gray-300 text-black text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center' type="submit">Login</button>
+            
           </form>
-
+          <div className='py-2 text-center text-gray-500'>Don't have an account yet? <Link className='underline text-black' to="/register">Register Now</Link>
+        </div>
     </div>
 </div>
   );

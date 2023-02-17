@@ -2,8 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors=require('cors');
 const bcrypt = require('bcrypt');
+const jwt= require('jsonwebtoken');
+const jwtSecret='ajgsdvhbas';
 const app = express();
 require('dotenv').config()
+mongoose.set('strictQuery', false)
 
 // // Connect to MongoDB database
 // mongoose.connect('mongodb://localhost/myapp', { useNewUrlParser: true })
@@ -63,7 +66,12 @@ app.post('/api/login', async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    res.status(200).json({ message: 'Login successful' });
+    //tokens and cookies work 
+ jwt.sign({email:user.email , id:user._id },jwtSecret,{},(err,token)=>{
+   if(err) throw err;
+   res.cookie('token', token).status(200).json({ message: 'Login successful' });
+ })
+   
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error logging in' });

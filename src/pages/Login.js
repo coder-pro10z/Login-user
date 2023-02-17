@@ -6,23 +6,24 @@ import { UserContext } from '../UserContext';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {setUser}=useContext(UserContext);
   const [redirect,setRedirect] = useState(false);
-
-
+  
+  
   const handleEmailChange = event => {
     setEmail(event.target.value);
   }
-
+  
   const handlePasswordChange = event => {
     setPassword(event.target.value);
   }
-const {setUser}=useContext(UserContext);
+
   async function handleSubmit(event) {
     event.preventDefault();
     const userData = {email,password}
     try{
-       const response = await axios.post('http://localhost:5000/api/login', userData)
-        setUser(response.data)
+       const {data}= await axios.post('http://localhost:5000/api/login', userData)
+        setUser(data)
         // console.log(res.data);
         alert("Login Successful");
         // redirect user to home page

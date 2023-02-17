@@ -4,6 +4,7 @@ const cors=require('cors');
 const bcrypt = require('bcrypt');
 const jwt= require('jsonwebtoken');
 const jwtSecret='ajgsdvhbas';
+const cookieParser= require('cookie-parser');
 const app = express();
 require('dotenv').config()
 mongoose.set('strictQuery', false)
@@ -24,6 +25,7 @@ const User = mongoose.model('User', userSchema);
 
 // Express middleware
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors({
     credentials:true,
     origin:'http://localhost:3000',
@@ -58,25 +60,43 @@ app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
-    if (!user) {
+    const userDoc = await User.findOne({ email });
+    if (!userDoc) {
       return res.status(404).json({ message: 'User not found' });
     }
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compare(password, userDoc.password);
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
     //tokens and cookies work 
- jwt.sign({email:user.email , id:user._id },jwtSecret,{},(err,token)=>{
+ jwt.sign({email:userDoc.email , id:userDoc._id },jwtSecret,{},(err,token)=>{
    if(err) throw err;
-   res.cookie('token', token).status(200).json({ message: 'Login successful' });
+   res.cookie('token', token).status(200).json(userDoc);
  })
    
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error logging in' });
-  }
+  } 
 });
+//profile  name displaying 
+
+app.get('/profile', (req,res)=>{
+  const {token}=req.cookies;
+  
+if (token) {
+jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
+  if(err) throw err;
+  const {name,email,_id}=
+   await User.findById(userData.id);
+  // const userDoc
+  res.json({name,email,_id});
+})
+  }
+  else{
+    res.json(null);
+  }
+})
 
 // Start server
 const PORT = process.env.PORT || 5000;

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import {Link, Navigate } from 'react-router-dom'
+import { UserContext } from '../UserContext';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -15,28 +16,25 @@ function Login() {
   const handlePasswordChange = event => {
     setPassword(event.target.value);
   }
-
-  const handleSubmit = event => {
+const {setUser}=useContext(UserContext);
+  async function handleSubmit(event) {
     event.preventDefault();
-
-    const userData = {
-      email,
-      password
-    }
-
-    axios.post('http://localhost:5000/api/login', userData)
-      .then(res => {
-        console.log(res.data);
+    const userData = {email,password}
+    try{
+       const response = await axios.post('http://localhost:5000/api/login', userData)
+        setUser(response.data)
+        // console.log(res.data);
         alert("Login Successful");
         // redirect user to home page
     setRedirect(true);
 
-      })
-      .catch(err => {
+    
+    }
+      catch(err) {
         console.log(err);
         alert("Login Failed");
 
-      });
+      };
   }
 
   if(redirect){

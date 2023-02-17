@@ -6,11 +6,15 @@ import React from 'react';
 import axios from 'axios';
 import './index.css'
 import Layout from './Layout'
+import { UserContextProvider } from './UserContext';
+
 axios.defaults.baseURL='http://localhost:5000'
 axios.defaults.withCredentials=true;
 function App() {
   return (
-    <div className="App">
+    // <div className="App">
+
+      <UserContextProvider>
      <BrowserRouter>
       <Routes> 
       <Route path="/" element={<Layout/>}>
@@ -23,7 +27,8 @@ function App() {
       </Route>
       </Routes>
      </BrowserRouter>
-    </div>
+      </UserContextProvider>
+
   );
 }
 

@@ -23,7 +23,9 @@ function App() {
         <Route index element={<Home/>} /> 
         <Route path='/login' element={<Login/>} /> 
         <Route path='/register' element={<Registration/>} /> 
-        <Route path='/account/:subpage?' element={<Account/>} /> 
+        <Route path='/account/:subpage?' element={<Account/>} />
+        <Route path='/account/:subpage/:action' element= 
+         {<Account/>} /> 
         {/* <Route path='/account/bookings' element={<AccountPage/>} /> 
         <Route path='/account/places' element={<AccountPage/>} />  */}
 

@@ -98,6 +98,10 @@ jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
   }
 })
 
+app.post('/logout',(req,res)=>{
+    res.cookie('token','').json(true)
+})
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

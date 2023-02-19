@@ -22,19 +22,23 @@ export default function Places(){
      </Link>
     </div>
     )}
-
+    
+    {/* // to add a new places  */}
     {action === 'new' &&(
         <div>
            <form >
             <h2 className="text-2xl mt-4" >Title</h2>
             <p className="text-gray-500 text-sm">Title for Your Place. should be short and precise for advertisement </p>
-               <input type="text" placeholder="Title, For Example: My Lovely Apartment" />
+               <input className="inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1" type="text" placeholder=" Title, For Example: My Lovely Apartment" />
                <h2 className= "text-2xl mt-4">Address</h2>
                <p className="text-gray-500 text-sm">Address to your Place that is going on rent  </p>
-               <input type="text" placeholder="Address" />
+               <input type="text" className='inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1' placeholder=" Address" />
                <h2 className="text-2xl mt-4">Photos</h2>
                <p className="text-gray-500 text-sm">The more the better </p>
-
+                <div>
+                    <input className='inline-flex border-2 border-gray-300 rounded-md w-5/6 max-w-full justify-between mt-1 p-1' placeholder=' Add photos using the link ...jpg '></input>
+                    <button className=" mt-4 px-4 py-2 ml-2 rounded-2xl">Add photo</button>
+                </div>
                <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
 
                <button className="border br-transparent rounded-2xl p-8 text-2xl text-gray-600">+</button>

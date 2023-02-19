@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt= require('jsonwebtoken');
 const jwtSecret='ajgsdvhbas';
 const cookieParser= require('cookie-parser');
+const imageDownloader=require('image-downloader')
 const app = express();
 require('dotenv').config()
 mongoose.set('strictQuery', false)
@@ -26,6 +27,7 @@ const User = mongoose.model('User', userSchema);
 // Express middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use('/uploads', express.static(__dirname+'/uploads'))
 app.use(cors({
     credentials:true,
     origin:'http://localhost:3000',
@@ -98,8 +100,27 @@ jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
   }
 })
 
+
 app.post('/logout',(req,res)=>{
     res.cookie('token','').json(true)
+})
+
+
+app.post('/upload-by-link', async (req,res)=>{
+  
+  const {link}=req.body;
+  const newName='Photo' + Date.now() + '.jpg';
+
+
+    await imageDownloader.image({
+      url:link,
+      dest: __dirname+'/uploads/' +newName,
+    });
+
+    
+    res.json(newName);
+  
+
 })
 
 // Start server

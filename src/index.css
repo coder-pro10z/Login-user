@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+input[type="text"],input[type="password"],input[type="email"],input[type="number"],
+
 button{
   @apply bg-gray-300;
 

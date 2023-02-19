@@ -21,9 +21,10 @@ export default function Account(){
     }
 
 
-    // if(user && ready){
-    //     return 'Loading...';
-    // }
+    if(!user || !ready){
+        return 'Loading...';
+    }
+
     if (ready && !user && !redirect){
         return <Navigate to={'/login'}/>
     }

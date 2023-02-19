@@ -55,9 +55,11 @@ export default function Places() {
 function uploadPhoto(ev){
     const files=ev.target.files;
     const data=new FormData();
+   //adding a new photo from device
     for(let i=0;i<files.length;i++){
         data.append('photos',files[i]);
     }
+
      //sending a req to API 
      axios.post('/upload',data,{
         headers:{'Content-type':'multipart/form-data'}
@@ -68,14 +70,6 @@ function uploadPhoto(ev){
         });
     })
 }
-    // const { data: filename } = await axios.post('/upload-by-link', { link: photoLink })
-    //     setAddedPhotos(prev => {
-    //         return [...prev, filename];
-    //     });
-
-    //     setPhotoLink('');
-
-
 
     return (
 
@@ -116,9 +110,9 @@ function uploadPhoto(ev){
                         </div>
                         <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                             {addedPhotos.length > 0 && addedPhotos.map(link => (
-                                <div>
+                                <div className="flex h-32">
                                     {/* {link} */}
-                                    <img  className='rounded-2xl'src={'http://localhost:5000/uploads/' + link} alt=""/> 
+                                    <img  className='rounded-2xl w-full object-cover'src={'http://localhost:5000/uploads/' + link} alt=""/> 
                                 </div>)
                             )}
                             <label className="flex justify-center cursor-pointer gap-1 border br-transparent rounded-2xl px-8 py-12 text-2xl text-gray-600">

@@ -21,9 +21,9 @@ export default function Account(){
     }
 
 
-    if(!ready){
-        return 'Loading...';
-    }
+    // if(user && ready){
+    //     return 'Loading...';
+    // }
     if (ready && !user && !redirect){
         return <Navigate to={'/login'}/>
     }
@@ -32,14 +32,6 @@ export default function Account(){
     if(redirect){
         return <Navigate to={redirect}/>
     }
-// return(
-//     <div> 
-//         account page for {user.name}
-//     </div>
-// )
-
-
-
 
 
 function linkClasses(type=null){

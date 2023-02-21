@@ -3,11 +3,12 @@ import Perks from "../Perks";
 import { useState } from "react";
 import axios from "axios";
 import AccountNav from "./AccountNav";
-import { Navigate } from "react-router-dom";
+import { Navigate,useParams  } from "react-router-dom";
+//import { Link} from "react-router-dom";
 export default function PlacesForm(){
 
 
-
+    const {id} = useParams();
     const [title, setTitle] = useState('');
     const [address, setAddress] = useState('');
     const [addedPhotos, setAddedPhotos] = useState([]);
@@ -19,6 +20,9 @@ export default function PlacesForm(){
     const [checkOut, setCheckOut] = useState('');
     const [maxGuests, setMaxGuests] = useState('1');
     const [redirect,setRedirect]=useState(false);
+
+    
+    
 
 
 

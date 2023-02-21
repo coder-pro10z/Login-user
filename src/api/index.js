@@ -6,6 +6,7 @@ const jwt= require('jsonwebtoken');
 const jwtSecret='ajgsdvhbas';
 const cookieParser= require('cookie-parser');
 const imageDownloader=require('image-downloader')
+const Place=require('./models/Place')
 const multer = require('multer')
 const fs=require('fs');
 const app = express();
@@ -136,6 +137,23 @@ app.post('/upload',photosMiddleware.array('photos',100),(req,res)=>{
   }
 res.json(uploadedFiles);
 })
+//request and respones function for places
+
+app.post('/places', (req,res)=>{
+  const {token}=req.cookies;
+  const {title,adress,addedPhotos,
+description,perks,extraInfo,
+checkIn,checkOut,maxGuests,}=req.body;
+  jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
+    if(err) throw err;
+    const placeDoc=await Place.create({
+owner:userData.id,title,adress,
+addedPhotos,description,perks,
+extraInfo,checkIn,checkOut,maxGuests
+    });
+    res.json(placeDoc);
+  });
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;

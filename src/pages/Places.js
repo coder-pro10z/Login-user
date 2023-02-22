@@ -3,6 +3,17 @@ import AccountNav from "./AccountNav";
 
 
 export default function Places() {
+
+    const [places,setPlaces] = useState([])
+    useEffect(() => {
+      axios.get('/places').then(({data})=>{
+        setPlaces(data)
+      })
+    
+    }, [])
+    //this is for the comment
+    
+
  return (
 
         <div>

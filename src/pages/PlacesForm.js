@@ -1,13 +1,13 @@
 import PhotoUploader from "../PhotoUploader";
 import Perks from "../Perks";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import axios from "axios";
 import AccountNav from "./AccountNav";
 import { Navigate ,useParams } from "react-router-dom";
 export default function PlacesForm(){
 
 
-    const {id} = useParams();
+    const {id} = useParams()
     const [title, setTitle] = useState('');
     const [address, setAddress] = useState('');
     const [addedPhotos, setAddedPhotos] = useState([]);
@@ -15,10 +15,30 @@ export default function PlacesForm(){
     const [description, setDescription] = useState('');
     const [perks, setPerks] = useState([]);
     const [extraInfo, setExtraInfo] = useState('');
-    const [checkIN, setCheckIn] = useState('');
+    const [checkIN, setCheckIn] = useState('')
     const [checkOut, setCheckOut] = useState('');
-    const [maxGuests, setMaxGuests] = useState('1');
+    const [maxGuests, setMaxGuests] = useState(1);
     const [redirect,setRedirect]=useState(false);
+
+    useEffect(()=>{
+        if(!id){
+            return;
+        }
+   
+        axios.get('/places/' + id).then(response => {
+        const {data} = response;
+        setTitle(data.title);
+        setAddress(data.address)
+        setAddedPhotos(data.photos)
+        setDescription(data.description)
+        setPerks(data.perks)
+        setExtraInfo(data.extraInfo)
+        setCheckOut(data.checkOut)
+        setCheckIn(data.checkIN)
+        setMaxGuests(data.maxGuests)
+
+    })
+    },[id])
 
 
 
@@ -44,11 +64,23 @@ export default function PlacesForm(){
             </>
         )
     }
-    async function addNewPlace(ev){
-        ev.preventDefault();
-        await axios.post('/places',{title,address,addedPhotos,description,perks,extraInfo,checkIN,checkOut,maxGuests});
 
-        setRedirect(true);
+    async function savePlace(ev){
+        ev.preventDefault();
+        const placeData ={title ,address ,addedPhotos ,
+                         description ,perks ,extraInfo ,
+                            checkIN ,checkOut ,maxGuests }
+        if(id){
+            //update
+            await axios.put('/places',{id, ...placeData});
+            setRedirect(true);
+             }
+        else{
+            //new place
+            await axios.post('/places',placeData);
+            setRedirect(true);
+             }
+        
     }
 
     if(redirect){
@@ -59,7 +91,7 @@ export default function PlacesForm(){
     return(
         <div>
             <AccountNav/>
-        <form onSubmit={addNewPlace}>
+        <form onSubmit={savePlace}>
             {preInput('Title', 'Title for Your Place. should be short and precise for advertisement')}
             <input className="inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1" type="text" value={title}
                 onChange={ev => setTitle(ev.target.value)} placeholder=" Title, For Example: My Lovely Apartment" />
@@ -109,6 +141,7 @@ export default function PlacesForm(){
 
                 <div>
                     <h3>Check out time</h3>
+        
                     <input className="inline-flex border-2 border-gray-300 rounded-md mt-1 mb-1 p-1" type='text' value={checkOut}
                         onChange={ev => setCheckOut(ev.target.value)}
                         placeholder="18:00"></input>
@@ -127,6 +160,7 @@ export default function PlacesForm(){
                 <button className="primary mt-4">Save</button>
             </div>
 
+  
         </form>
     </div>
 

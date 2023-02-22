@@ -148,21 +148,13 @@ checkIn,checkOut,maxGuests,}=req.body;
     if(err) throw err;
     const placeDoc=await Place.create({
 owner:userData.id,title,adress,
-photos:addedPhotos,description,perks,
+addedPhotos,description,perks,
 extraInfo,checkIn,checkOut,maxGuests
     });
     res.json(placeDoc);
   });
 });
 
-app.get('/places',(req,res)=>{
-  const {token}=req.cookies;
-  jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
-    const {id} = userData;
-    res.json(await Place.find({owner:id}));
-  });
-
-});
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

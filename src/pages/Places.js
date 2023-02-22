@@ -12,6 +12,7 @@ export default function Places() {
       })
     
     }, [])
+    //this is for the comment
     
  return (
 

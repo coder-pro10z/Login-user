@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors=require('cors');
 const bcrypt = require('bcrypt');
 const jwt= require('jsonwebtoken');
-const jwtSecret='ajgsdvhbas';
+const jwtSecret=('ajgsdvhbas');
 const cookieParser= require('cookie-parser');
 const imageDownloader=require('image-downloader')
 const Place=require('./models/Place')
@@ -143,23 +143,25 @@ app.post('/places', (req,res)=>{
   const {token}=req.cookies;
   const {title,address,addedPhotos,
 description,perks,extraInfo,
-checkIn,checkOut,maxGuests,}=req.body;
+checkIn,checkOut,maxGuests,price,}=req.body;
   jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
     if(err) throw err;
     const placeDoc=await Place.create({
 owner:userData.id,title,address,
 photos:addedPhotos,description,perks,
-extraInfo,checkIn,checkOut,maxGuests
+extraInfo,checkIn,checkOut,maxGuests,price
     });
     res.json(placeDoc);
   });
 });
 
-app.get('/places',(req,res)=>{
+app.get('/user-places',(req,res)=>{
+  // if(err) throw err;
   const {token}=req.cookies;
   jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
     const {id} = userData;
-    res.json(await Place.find({owner:id}));
+   // console.log(Place.find({owner:id}))
+     res.json(await Place.find({owner:id}));
   });
 
 });
@@ -172,12 +174,12 @@ app.get('/places/:id',async (req,res) =>{
 })
 
 
-app.put('/places/:id',async (req,res)=>{
+app.put('/places/',async (req,res)=>{
   // const {id} = req.params;
   const {token} = req.cookies;
   const {id, title,address,addedPhotos,
     description,perks,extraInfo,
-    checkIn,checkOut,maxGuests,}=req.body;
+    checkIn,checkOut,maxGuests,price,}=req.body;
     
   jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
     if(err) throw err;
@@ -186,15 +188,20 @@ app.put('/places/:id',async (req,res)=>{
       placeDoc.set({
         title,address,
       photos:addedPhotos,description,perks,
-      extraInfo,checkIn,checkOut,maxGuests
+      extraInfo,checkIn,checkOut,maxGuests,price,
       })
       await placeDoc.save();
-      res.json('ok')
+      //This line was responsible for crashing nodemon because there were 2 simultaneous call back were made with the help of response (res).
+       return res.json('ok') 
     };
-    res.json(await Place.find({owner:id}));
+   // res.json(await Place.find({owner:id}));
   });
   }
 )
+
+app.get('/places', async(req,res)=>{
+  res.json(await Place.find());
+})
 
 
 // Start server

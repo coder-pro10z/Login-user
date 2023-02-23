@@ -1,13 +1,14 @@
-import { Link,useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AccountNav from "./AccountNav";
 import axios from "axios"
 import {useEffect, useState } from "react";
 
 export default function Places() {
 
-    const [places,setPlaces] = useState([])
+    const [places,setPlaces] = useState([]);
     useEffect(() => {
-      axios.get('/places').then(({data})=>{
+      axios.get('/user-places')
+      .then(({data})=>{
         setPlaces(data)
       })
 

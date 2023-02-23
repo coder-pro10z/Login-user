@@ -67,6 +67,7 @@ function Login() {
             <button className='flex text-center bg-gray-300 text-black text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center' type="submit">Login</button>
             
           </form>
+          
           <div className='py-2 text-center text-gray-500'>Don't have an account yet? <Link className='underline text-black' to="/register">Register Now</Link>
         </div>
     </div>

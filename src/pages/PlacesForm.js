@@ -19,6 +19,7 @@ export default function PlacesForm(){
     const [checkOut, setCheckOut] = useState('');
     const [maxGuests, setMaxGuests] = useState(1);
     const [redirect,setRedirect]=useState(false);
+    const [price,setPrice]=useState(400);
 
     useEffect(()=>{
         if(!id){
@@ -36,6 +37,7 @@ export default function PlacesForm(){
         setCheckOut(data.checkOut)
         setCheckIn(data.checkIN)
         setMaxGuests(data.maxGuests)
+        setPrice(data.price)
 
     })
     },[id])
@@ -69,10 +71,17 @@ export default function PlacesForm(){
         ev.preventDefault();
         const placeData ={title ,address ,addedPhotos ,
                          description ,perks ,extraInfo ,
-                            checkIN ,checkOut ,maxGuests }
+                            checkIN ,checkOut ,maxGuests,price ,}
+                            //we might add try catch error in this block so that error might resolve
         if(id){
             //update
-            await axios.put('/places',{id, ...placeData});
+            try{
+
+                await axios.put('/places',{id, ...placeData});
+            }
+            catch(err){
+                console.log( err);
+            }
             setRedirect(true);
              }
         else{
@@ -152,6 +161,12 @@ export default function PlacesForm(){
                     <input className="inline-flex border-2 border-gray-300 rounded-md mt-1 mb-1 p-1" type='number'
                         value={maxGuests}
                         onChange={ev => setMaxGuests(ev.target.value)} placeholder="2"></input>
+                </div>
+                <div>
+                    <h3>Price per night</h3>
+                    <input className="inline-flex border-2 border-gray-300 rounded-md mt-1 mb-1 p-1" type='number'
+                        value={price}
+                        onChange={ev => setPrice(ev.target.value)} ></input>
                 </div>
 
             </div>

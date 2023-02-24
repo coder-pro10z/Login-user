@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect,useState } from 'react'
-import Places from './Places';
-
+// import Places from './Places';
+import {Link} from 'react-router-dom'
 const Home = () => {
 
   const[places,setPlaces]=useState([]);
@@ -16,7 +16,7 @@ useEffect(()=>{
   return (
     <div className='mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
       {places.length>0 && places.map(place=>(
-          <div>
+          <Link to={'/place/'+place._id}>
            <div key={place.photos} className='bg-gray-500 rounded-2xl flex'>
             {place.photos?.[0] && (
               <img key={place.photos} className='rounded-2xl object-cover aspect-square' src={'http://localhost:5000/uploads/'+place.photos?.[0]} alt=""/>
@@ -28,7 +28,7 @@ useEffect(()=>{
             <div className='mt-1'>
               <span className='font-bold'> ₹{place.price} </span>per night
             </div>
-           </div>
+           </Link>
 
       ))}
     </div>

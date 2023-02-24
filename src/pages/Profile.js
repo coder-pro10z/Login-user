@@ -1,5 +1,5 @@
 import { useContext,useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom/dist";
 import { UserContext } from "../UserContext";
 import Places from "./Places";

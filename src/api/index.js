@@ -7,6 +7,7 @@ const jwtSecret=('ajgsdvhbas');
 const cookieParser= require('cookie-parser');
 const imageDownloader=require('image-downloader')
 const Place=require('./models/Place')
+const Booking= require('./models/Booking')
 const multer = require('multer')
 const fs=require('fs');
 const app = express();
@@ -201,7 +202,20 @@ app.put('/places/',async (req,res)=>{
 
 app.get('/places', async(req,res)=>{
   res.json(await Place.find());
-})
+});
+
+app.post('/bookings',async(req,res)=>{
+  const {
+    place,checkIn,checkOut,numberOfGuests,name,phone,price,
+  } = req.body;
+  Booking.create({
+    place,checkIn,checkOut,numberOfGuests,name,phone,price,
+  }).then((doc) => {
+    res.json(doc);
+  }).catch(()=>{
+    throw err;
+  });
+});
 
 
 // Start server

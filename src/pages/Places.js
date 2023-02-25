@@ -41,7 +41,9 @@ export default function Places() {
                         <Link to ={'/account/places/'+place._id} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl" key={place._id}>
                             <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
                                <div>
-                               <PlaceImg place={place}/>
+                               
+                                {/* <img key={place.photos} className='rounded-2xl object-cover aspect-square' src={'http://localhost:5000/uploads/'+place.photos?.[0]} alt=""/> } */}
+                             <PlaceImg place={place}/>
                                 
                                </div>
                             </div>

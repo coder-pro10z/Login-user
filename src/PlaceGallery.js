@@ -22,7 +22,7 @@ const PlaceGallery = ({place}) => {
             
           {place?.photos?.length > 0 && place.photos.map(photo =>(
             <div className='min-w-full min-h-screen'>
-            <img src={'http://localhost:5000/uploads/'+photo}></img>
+            <img src={'http://localhost:5000/uploads/'+photo}> </img>
             </div>
           ))}
           </div>

@@ -16,9 +16,11 @@ export default function Places() {
     }, [])
 
     const handleDelete = (id) => {
-        axios.delete(`/user-places/${id}`)
+        axios.delete(`/places/${id}`)
           .then(({ data }) => {
             setPlaces(places.filter(place => place._id !== data._id));
+            window.location.reload(false);
+            alert("Deleted Successful");
           })
           .catch(err => console.error(err));
       };

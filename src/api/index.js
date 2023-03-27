@@ -10,6 +10,7 @@ const Place=require('./models/Place')
 const Booking= require('./models/Booking')
 const multer = require('multer')
 const fs=require('fs');
+const { Router } = require('express');
 const app = express();
 require('dotenv').config()
 mongoose.set('strictQuery', false)
@@ -241,9 +242,9 @@ app.get('/bookings',async (req,res)=>{
 // Delete entry by ID
 // Delete place route
 // Delete a place with the specified ID
-app.delete('/user-places/:id', (req, res) => {
+app.delete('/places/:id', (req, res) => {
   const id = req.params.id;
-  Place.findByIdAndRemove(id, (err, place) => {
+  Place.findByIdAndRemove(id, (err, Place) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'An error occurred while deleting the place' });

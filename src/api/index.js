@@ -236,6 +236,24 @@ app.get('/bookings',async (req,res)=>{
   res.json(await Booking.find({user:userData.id}).populate('place'));
 })
 
+
+//Attempt to Delete Place Enteries 
+// Delete entry by ID
+// Delete place route
+// Delete a place with the specified ID
+app.delete('/user-places/:id', (req, res) => {
+  const id = req.params.id;
+  Place.findByIdAndRemove(id, (err, place) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'An error occurred while deleting the place' });
+    } else {
+      res.json({ message: 'Place deleted successfully' });
+    }
+  });
+});
+
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

@@ -3,9 +3,9 @@ import AccountNav from './AccountNav'
 import {useEffect,useState} from 'react'
 import axios from 'axios'
 import PlaceImg from '../PlaceImg'
-import {format} from 'date-fns'
+
 import {Link} from 'react-router-dom'
-import {differenceInCalendarDays} from 'date-fns'
+
 import BookingDates from '../BookingDates'
 const BookingsPage = () => {
     const [bookings,setBookings] = useState([])

@@ -16,12 +16,14 @@ export default function Places() {
     }, [])
 
     const handleDelete = (id) => {
-        axios.delete(`/user-places/${id}`)
-          .then(({ data }) => {
-            setPlaces(places.filter(place => place._id !== data._id));
-          })
-          .catch(err => console.error(err));
-      };
+      axios.delete(`/user-places/${id}`)
+        .then(({data})=>{
+          setPlaces(places.filter(place => place._id !== data._id));
+        })
+        .catch(err=>{
+          console.error(err);
+        })
+    }
 
  return (
 
@@ -59,7 +61,7 @@ export default function Places() {
                             <p className="text-sm mt-2">{place.description}</p>
                             </div>
                         </Link>
-                            <button className="flex text-center bg-red-500 w-20 text-white px-4 py-2 rounded mt-2" onClick={()=>handleDelete(place._id)}>Delete</button>
+                            <button className="flex text-center bg-red-500 text-white px-4 py-2 rounded mt-2" onClick={()=>handleDelete(place._id)}>Delete</button>
                         </div>
 
                     ))}

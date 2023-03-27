@@ -4,7 +4,7 @@ if(!place.photos?.length){
 return '';
 }
 if(!className){
-    className='object-cover';
+    className='object-cover w-32 h-32 shrink-0';
 }
 
 

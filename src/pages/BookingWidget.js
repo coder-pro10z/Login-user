@@ -46,7 +46,7 @@ const BookingWidget = ({place}) => {
     <div>
       <div className='bg-white shadow shadow-md shadow-gray-500 p-4 rounded 2-xl'>
             <div className='text-2xl text-center'>
-              Price : ${place.price} per night
+              Price : ₹{place.price} per night
               </div>
 
               <div className='border rounded-2xl mt-4 mb-4'>
@@ -90,7 +90,7 @@ const BookingWidget = ({place}) => {
             <button onClick={bookThisPlace} className='primary' >
               Book this place 
               {numberOfNights>0 && (
-                <span> ${numberOfNights * place.price}</span>
+                <span> ₹{numberOfNights * place.price}</span>
               )}
               </button>
 

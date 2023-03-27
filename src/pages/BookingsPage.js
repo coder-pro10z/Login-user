@@ -3,10 +3,9 @@ import AccountNav from './AccountNav'
 import {useEffect,useState} from 'react'
 import axios from 'axios'
 import PlaceImg from '../PlaceImg'
-
 import {Link} from 'react-router-dom'
-
 import BookingDates from '../BookingDates'
+
 const BookingsPage = () => {
     const [bookings,setBookings] = useState([])
     useEffect(()=>{
@@ -29,8 +28,6 @@ const BookingsPage = () => {
                 
                 <div className='py-3 pr-3 grow'>
                         <h2 className='text-xl'>{booking.place.title}</h2>
-                
-
                         <div className='flex gap-2 item-center border-t border-gray-300 mt-2 py-2'>
                 
                 </div>

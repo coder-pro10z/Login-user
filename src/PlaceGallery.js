@@ -22,13 +22,14 @@ const PlaceGallery = ({place}) => {
             
           {place?.photos?.length > 0 && place.photos.map(photo =>(
             <div className='min-w-full min-h-screen'>
-            <img src={'http://localhost:5000/uploads/'+photo}> </img>
+            <img src={'http://localhost:5000/uploads/'+photo} alt=''> </img>
             </div>
           ))}
           </div>
         </div>
         )
       }
+
   return (
     <div>
       <div className='relative'>
@@ -36,14 +37,14 @@ const PlaceGallery = ({place}) => {
         <div className='aspect-square object-cover '>
           {place.photos?.[0] && (
           <div>
-            <img onClick={()=> setShowAllPhotos(true)} className='cursor-pointer w-[100%] aspect-square object-cover' src={'http://localhost:5000/uploads/'+place.photos[0]}></img>
+            <img onClick={()=> setShowAllPhotos(true)} className='cursor-pointer aspect-square min-w-full object-cover' alt='' src={'http://localhost:5000/uploads/'+place.photos[0]}></img>
           </div>
             )}
           </div>
         
-        <div className='grid'>{place.photos?.[1] && (<img onClick={()=> setShowAllPhotos(true)} className='cursor-pointer aspect-square object-cover min-h-[100%]' src={'http://localhost:5000/uploads/'+place.photos[1]}></img>)}
+        <div className='grid'>{place.photos?.[1] && (<img onClick={()=> setShowAllPhotos(true)} alt='' className='cursor-pointer aspect-square object-cover min-h-[100%]' src={'http://localhost:5000/uploads/'+place.photos[1]}></img>)}
             <div className='overflow-hidden'>
-              {place.photos?.[2] && (<img onClick={()=> setShowAllPhotos(true)} className='cursor-pointer aspect-square object-cover relative top-2  min-h-[100%] ' src={'http://localhost:5000/uploads/'+place.photos[2]}></img>)}
+              {place.photos?.[2] && (<img onClick={()=> setShowAllPhotos(true)} alt='' className='cursor-pointer aspect-square object-cover relative top-2  min-h-[100%] ' src={'http://localhost:5000/uploads/'+place.photos[2]}></img>)}
             </div>
 
             <button onClick={()=>setShowAllPhotos(true)} className='flex gap-1 absolute bottom-2 right-2 py-2 px-2 bg-white rounded-2xl shawdow shadow-md shadow-gray-500 text-black'>

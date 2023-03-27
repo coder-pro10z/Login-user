@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React from 'react'
 
 const AddressLink = ({children},className=null) => {
   if(className){
-    className='my-3 my-2 block '
+    className='mx-3 my-2 block '
   }
   className+='flex gap-1 font-semibold underline'
     return (

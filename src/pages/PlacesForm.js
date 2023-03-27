@@ -15,7 +15,7 @@ export default function PlacesForm(){
     const [description, setDescription] = useState('');
     const [perks, setPerks] = useState([]);
     const [extraInfo, setExtraInfo] = useState('');
-    const [checkIN, setCheckIn] = useState('')
+    const [checkIn, setCheckIn] = useState('')
     const [checkOut, setCheckOut] = useState('');
     const [maxGuests, setMaxGuests] = useState(1);
     const [redirect,setRedirect]=useState(false);
@@ -35,7 +35,7 @@ export default function PlacesForm(){
         setPerks(data.perks)
         setExtraInfo(data.extraInfo)
         setCheckOut(data.checkOut)
-        setCheckIn(data.checkIN)
+        setCheckIn(data.checkIn)
         setMaxGuests(data.maxGuests)
         setPrice(data.price)
 
@@ -71,7 +71,7 @@ export default function PlacesForm(){
         ev.preventDefault();
         const placeData ={title ,address ,addedPhotos ,
                          description ,perks ,extraInfo ,
-                            checkIN ,checkOut ,maxGuests,price ,}
+                            checkIn ,checkOut ,maxGuests,price ,}
                             //we might add try catch error in this block so that error might resolve
         if(id){
             //update
@@ -103,14 +103,14 @@ export default function PlacesForm(){
         <form onSubmit={savePlace}>
             {preInput('Title', 'Title for Your Place. should be short and precise for advertisement')}
             <input className="inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1" type="text" value={title}
-                onChange={ev => setTitle(ev.target.value)} placeholder=" Title, For Example: My Lovely Apartment" />
+                onChange={ev => setTitle(ev.target.value)} placeholder=" Title, For Example: My Lovely Apartment"  required/>
 
             {preInput('Address', 'Address to your Place that is going on rent ')}
 
 
             <input type="text" className='inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1'
                 value={address}
-                onChange={ev => setAddress(ev.target.value)} placeholder=" Address" />
+                onChange={ev => setAddress(ev.target.value)} placeholder=" Address"  required/>
             
             
             {preInput('Photos', 'The more the better')}
@@ -137,15 +137,15 @@ export default function PlacesForm(){
 
             <textarea className="border-2 border-gray-300 rounded-md w-80 p-8 " value={extraInfo}
                 onChange={ev => setExtraInfo(ev.target.value)} />
-            {preInput('Check IN & Out times ', 'Select all the perks of your place')}
+            {preInput('Check In & Out times ', 'Select all the perks of your place')}
 
 
             <div className="mt-2 grid sm:grid-cols-3 items-center text-center ">
                 <div >
                     <h3>Check in time</h3>
-                    <input className="inline-flex border-2 border-gray-300 rounded-md mt-1 mb-1 p-1" type='text' value={checkIN}
+                    <input className="inline-flex border-2 border-gray-300 rounded-md mt-1 mb-1 p-1" type='text' value={checkIn}
                         onChange={ev => setCheckIn(ev.target.value)}
-                        placeholder="14:00"></input>
+                        placeholder="14:00" required></input>
                 </div>
 
                 <div>
@@ -153,20 +153,20 @@ export default function PlacesForm(){
         
                     <input className="inline-flex border-2 border-gray-300 rounded-md mt-1 mb-1 p-1" type='text' value={checkOut}
                         onChange={ev => setCheckOut(ev.target.value)}
-                        placeholder="18:00"></input>
+                        placeholder="18:00" required></input>
                 </div>
 
                 <div>
                     <h3>Max no. of Guests</h3>
                     <input className="inline-flex border-2 border-gray-300 rounded-md mt-1 mb-1 p-1" type='number'
                         value={maxGuests}
-                        onChange={ev => setMaxGuests(ev.target.value)} placeholder="2"></input>
+                        onChange={ev => setMaxGuests(ev.target.value)} placeholder="2" required></input>
                 </div>
                 <div>
                     <h3>Price per night</h3>
                     <input className="inline-flex border-2 border-gray-300 rounded-md mt-1 mb-1 p-1" type='number'
                         value={price}
-                        onChange={ev => setPrice(ev.target.value)} ></input>
+                        onChange={ev => setPrice(ev.target.value)}  required></input>
                 </div>
 
             </div>

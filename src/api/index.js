@@ -253,6 +253,11 @@ app.delete('/places/:id', (req, res) => {
     }
   });
 });
+// user profile photo
+
+// const updateUserProfile= asyncHandler(async (req,res)=>{
+
+// })
 
 
 // Start server

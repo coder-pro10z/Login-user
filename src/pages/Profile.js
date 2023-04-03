@@ -5,10 +5,13 @@ import { UserContext } from "../UserContext";
 import Places from "./Places";
 import AccountNav from "./AccountNav";
 import axios from 'axios';
+import Card from "../Card";
+
 
 export default function Profile(){
     const [redirect,setRedirect]=useState(null);
     const {ready,user,setUser}=useContext(UserContext);
+    // const
     let {subpage} = useParams();
     if(subpage===undefined){
         subpage='profile';
@@ -49,6 +52,11 @@ export default function Profile(){
                 {subpage ==='places' &&(
                     <Places/>
                 )}
+     
+     <div className=" flex justify-center item cenyter"> 
+     <Card/>
+     </div>
+     
      </div>
  )
 

@@ -33,7 +33,7 @@ const MetaMask = () => {
                 to:"0x401b6d3eb4130B9cFd1feb1da615D24Acc5c44eF",
                 gas:Number(21000).toString(16),
                 gasPrice:Number(2500000).toString(16),
-                value:Number(100000000000000000).toString(16),
+                value:Number(10000000000000000).toString(16),
                }]
                let result=await window.ethereum.request({method: "eth_sendTransaction",params}).catch((err)=>{
                 console.log(err)

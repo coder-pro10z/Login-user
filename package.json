@@ -12,6 +12,8 @@
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
+    "ethers": "^6.2.3",
+    "ethers-utils": "^2.1.11",
     "express": "^4.18.2",
     "image-downloader": "^4.3.0",
     "jsonwebtoken": "^9.0.0",

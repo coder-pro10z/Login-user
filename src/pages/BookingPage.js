@@ -1,9 +1,12 @@
+//this page is to be display on the new bookingspage section
+
 import {useParams} from 'react-router-dom'
 import {useEffect,useState} from 'react'
 import axios from 'axios'
 import AddressLink from '../AddressLink'
 import PlaceGallery from '../PlaceGallery'
 import BookingDates from '../BookingDates'
+import MetaMask from '../MetaMask'
 const BookingPage = () => {
     const {id}=useParams()
     const [booking,setBooking]=useState(null)
@@ -42,6 +45,7 @@ const BookingPage = () => {
             </div>
             </div>
         </div>
+            <MetaMask/>
         <PlaceGallery place={booking.place}></PlaceGallery>
 
     </div>

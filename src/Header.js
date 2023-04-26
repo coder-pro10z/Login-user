@@ -7,9 +7,9 @@ const Header = () => {
 const {user}=useContext(UserContext)
 
   return (
-    <div>
-      <header className='flex  space-between justify-between pos-sticky pb-4'>
-        <a href='/' className='flex item-center gap-1 '>
+    <div className=' border-b-2 rounded-2xl  '>
+      <header className='flex p-1 space-between justify-between pos-sticky pb-4'>
+        <a href='/' className='p-1.5 flex item-center gap-1 '>
         
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
@@ -18,7 +18,7 @@ const {user}=useContext(UserContext)
         <span className='font-bold text-xl'>RentIt</span>
         </a>
 {/* SEARCHBAR */}
-        <div className='flex gap-2 border border-gray-300 rounded-full px-2 py-2 shadow-md shadow-gray-300 '>
+        <div className='flex gap-2.5 border border-gray-300 rounded-full px-2 py-2 shadow-md shadow-gray-300 '>
 
           <div>Anywhere</div>
           {/* TO CREATE A VERTICAL LINE  */}

@@ -43,10 +43,11 @@ function Login() {
   } 
 
   return (
+    
 
-<div className="min-h-screen flex items-center justify-center bg-gray-200 sm:px-6 lg:px-8">      
+<div className="min-h-screen flex items-center justify-center bg-gray-00 sm:px-6 lg:px-8">      
     <div className="max-w-md w-full space-y-8">
-        <div><h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Log in to your account</h2></div>
+        <div><h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 font-rubik">Log in to your account</h2></div>
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
             <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" >Email</label> 
@@ -72,6 +73,7 @@ function Login() {
         </div>
     </div>
 </div>
+
   );
 }
 

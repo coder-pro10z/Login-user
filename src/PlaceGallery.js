@@ -11,7 +11,7 @@ const PlaceGallery = ({place}) => {
   
           <div className='bg-black p-8 grid gap-4'>
           
-          <h2 className='mr-48 text-3xl'>Photos of {place.title}</h2>
+          <h2 className='mr-48 flex justify-center p-1 mb-5 text-2xl'>Photos of {place.title}</h2>
   
           <button onClick={()=>setShowAllPhotos(false)} className=' fixed text-black right-12 top-8 flex gap-1 py-2 px-4 rounded-2xl  ml-2 shadow shadow-md shadow-gray-700'>
             Close photos 
@@ -21,8 +21,8 @@ const PlaceGallery = ({place}) => {
           </button>
             
           {place?.photos?.length > 0 && place.photos.map(photo =>(
-            <div className='min-w-full min-h-screen'>
-            <img src={'http://localhost:5000/uploads/'+photo} alt=''></img>
+            <div className=' flex justify-center max-w-full max-h-screen'>
+            <img className='rounded-2xl' src={'http://localhost:5000/uploads/'+photo} alt=''></img>
             </div>
           ))}
           </div>

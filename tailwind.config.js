@@ -8,6 +8,8 @@ module.exports = {
        },
       colors:{
         primary:'rgb(1, 122, 243)',
+        fade:'#AFD3E2',
+        
       },
       
     },

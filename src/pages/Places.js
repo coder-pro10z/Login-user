@@ -43,11 +43,11 @@ export default function Places() {
                     </Link>
                 </div>
             
-                <div className="mt-4">
+                <div className="mt-4 ">
                     {places.length> 0 && places.map(place =>(
                       
-                      <div className="flex flex-col bg-gray-100 p-4 rounded-2xl" key={place._id}>
-                        <Link to ={'/account/places/'+place._id} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl" key={place._id}>
+                      <div className="m-4 flex flex-col  p-4 rounded-2xl" key={place._id}>
+                        <Link to ={'/account/places/'+place._id} className="flex cursor-pointer gap-4 bg-fade bg-gray-100 p-4 rounded-2xl" key={place._id}>
                             <div className="flex w-32 h-32 aspect-square object-cover bg-gray-300 grow shrink-0">
                                
                                {/* <div> */}

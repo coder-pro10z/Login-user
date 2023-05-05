@@ -18,8 +18,8 @@ const BookingsPage = () => {
       <AccountNav/>
       <div>
         {bookings?.length > 0 && bookings.map(booking => (
-            <Link to= {'/account/bookings/'+booking._id} className='flex gap-4 bg-gray-200 rounded-2xl overflow-hidden'>
-                <div className='w-48'>
+            <Link to= {'/account/bookings/'+booking._id} className='flex gap-4 m-4 bg-gray-200 rounded-2xl overflow-hidden'>
+                <div className=''>
                     <PlaceImg place={booking.place}/>
                 </div>
                 

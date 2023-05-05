@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom"
 import AddressLink from '../AddressLink'
 import PlaceGallery from '../PlaceGallery'
 import BookingWidget from './BookingWidget'
+import ShareButton from '../Share'
 
 const PlacePage = () => {
     const {id}=useParams()
@@ -22,14 +23,21 @@ const PlacePage = () => {
  
 
     return (
-    <div className='mt-4 bg-gray-100 -mx-8 px-8 pt-8'>
+    <div className='mt-4  -mx-8 px-8 pt-8'>
       {/* Place page:{id} */}
-      <h1 className='mt-4 text-3xl bg-gray-100 -mx-8 px-8 py-4 '>{place.title}</h1>
+      <h1 className='mt-4 text-3xl  -mx-8 px-8 py-4 '>{place.title}</h1>
+      
+     <div className='flex justify-between p-4 '>
       <AddressLink >{place.address}
      </AddressLink >
+      <ShareButton />
+      </div>
+      
       <PlaceGallery place={place}/>
 
       <div className='mt-8 gap-8 grid grid-cols-1 md:grid-cols-[2fr_1fr]'>
+
+        
       <div>
         <div className='my-4'>
           <h2 className='font-semibold text-2xl'>Description</h2>

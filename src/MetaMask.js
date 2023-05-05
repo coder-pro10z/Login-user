@@ -1,6 +1,7 @@
 import React ,{useState}from 'react';
 import {ethers} from 'ethers';
 
+
 const MetaMask = () => {
   const[errorMessage,setErrorMessage]=useState(null);
   const[defaultAccount,setDefaultAccount]=useState(null);
@@ -28,31 +29,42 @@ const MetaMask = () => {
                })
           }
          async function sendTransaction(){
-               let params =[{
-                from :"0xA947E779B095A61cD94977C3A359036a53f7F850",
+          try{
+            const accounts =await window.ethereum.request({method: 'eth_accounts'});
+            if(accounts.length===0){
+              console.log('No accounts found in Metamask Wallet');
+              return;
+            }
+            const from=accounts[0];
+          
+            const params =[{
+                from ,
                 to:"0x401b6d3eb4130B9cFd1feb1da615D24Acc5c44eF",
                 gas:Number(21000).toString(16),
                 gasPrice:Number(2500000).toString(16),
                 value:Number(10000000000000000).toString(16),
-               }]
-               let result=await window.ethereum.request({method: "eth_sendTransaction",params}).catch((err)=>{
-                console.log(err)
-               })
+               }];
+               const result=await window.ethereum.request({method: "eth_sendTransaction",params});
+               console.log(result);
+         } catch(error){
+          console.log(error);
          }
+        }
 
   return (
-    <div  className='border-2 p-2 m-3 border-blue-600 rounded-2xl '> 
+    <div  className='p-3 m-4 rounded-2xl max-w-xl shadow-lg'> 
     <h1 className='flex justify-center text-2xl'> MetaMask Connection </h1>
-
-    <h1 className='text-2xl flex justify-center'>Connection using windows.ethereum</h1>
+    <div className='flex '>
     <button onClick={connectButton} className='bg-primary rounded-xl p-3 m-2 flex justify-center'>conncet</button>
+    <form onSubmit={sendTransaction}>
+          
+          <button className='bg-primary rounded-xl p-3 m-2 flex justify-center'>submit</button>
+        </form>
+        </div>
     <h2>Address: {defaultAccount}</h2>
     <h2>Balance: ETH  {userBalance}</h2>
         
-        <form onSubmit={sendTransaction}>
-          {/* <input type="submit" value="Submit"/> */}
-          <button>submit</button>
-        </form>
+        
 
     {errorMessage}
     </div>

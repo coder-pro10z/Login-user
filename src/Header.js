@@ -2,20 +2,13 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from './UserContext'
 import SearchBar from './SearchBar'
-import Lottie from 'react-lottie';
-import Dot from './icons/dots.json'
+
+
 
 const Header = () => {
 
   const { user } = useContext(UserContext)
-  const defaultOptions={
-    loop:true,
-    autoplay:true,
-    animationData : Dot,
-    rendererSettings:{
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+  
 
   return (
 
@@ -33,15 +26,14 @@ const Header = () => {
           {/* SEARCHBAR */}
           <SearchBar/>
           
+          
 
-        <Link to={user ? "/account" : "/login"} className='flex item-center gap-2 border border-gray-300 rounded-full px-2 py-2 mr-4'>
+        <Link to={user ? "/account" : "/login"} className='flex item-center justify-center gap-2 border border-gray-300 rounded-full px-2 py-2 mr-4'>
 
-          {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg> */}
-          <div className='flex justify-center px-1 '><Lottie options={defaultOptions} height={30} width={30}/></div>
-             
-
+          </svg>
+         
           <div className='text-white bg-gray-500 rounded-full p-1 border border-gray-500 overflow-hidden  justify-center'>
 
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 relative top-1">

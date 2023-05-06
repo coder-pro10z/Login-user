@@ -44,8 +44,8 @@ const BookingWidget = ({place}) => {
 
   return (
     <div>
-      <div className='bg-white shadow shadow-md shadow-gray-500 p-4 rounded 2-xl'>
-            <div className='text-2xl text-center'>
+      <div className='bg-white shadow shadow-md shadow-gray-500 p-4 rounded-2xl'>
+            <div className='text-2xl font-no text-center'>
               Price : ₹{place.price} per night
               </div>
 
@@ -53,20 +53,20 @@ const BookingWidget = ({place}) => {
             <div className='flex'>
 
             <div className=' py-3 px-4 border-r'>
-              <label>Check In: </label>
+              <label className='font-no'>Check In: </label>
               <input type='date' 
               value={checkIn} 
               onChange={ev => setCheckIn(ev.target.value)}></input>
             </div>
             <div className=' py-3 px-4 '>
-              <label>Check Out: </label>
+              <label className='font-no'>Check Out: </label>
               <input type='date' 
               value={checkOut} 
               onChange={ev => setCheckOut(ev.target.value)}></input>
             </div>
             </div>
             <div className=' py-3 px-4 border-t'>
-              <label>Number of Guests :</label>
+              <label className='font-no'>Number of Guests :</label>
               <input className='rounded-xl p-1 border border-gray-500 bg-white text-black' type='number' 
               value={numberOfGuests} 
               onChange={ev => setNumberOfGuests(ev.target.value)}></input>
@@ -74,12 +74,12 @@ const BookingWidget = ({place}) => {
 
             {numberOfNights >0 && (
                <div className=' py-3 px-4 border-t'>
-               <label>Your full Name:</label>
+               <label className='font-no'>Your full Name:</label>
                <input type='text' 
                value={name} 
                onChange={ev => setName(ev.target.value)}></input>
                
-               <label>phone Number:</label>
+               <label className='font-no'>phone Number:</label>
                <input type='tel' 
                value={phone} 
                onChange={ev => setphone(ev.target.value)}></input>
@@ -87,10 +87,10 @@ const BookingWidget = ({place}) => {
             )}
 
               </div>
-            <button onClick={bookThisPlace} className='primary' >
+            <button onClick={bookThisPlace} className='primary font-no' >
               Book this place 
               {numberOfNights>0 && (
-                <span> ₹{numberOfNights * place.price}</span>
+                <span className='font-no'> ₹{numberOfNights * place.price}</span>
               )}
               </button>
 

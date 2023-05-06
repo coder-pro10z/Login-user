@@ -43,11 +43,11 @@ export default function Places() {
                     </Link>
                 </div>
             
-                <div className="mt-4 ">
+                <div className="mt-4 mr-20 ml-20 ">
                     {places.length> 0 && places.map(place =>(
                       
                       <div className="m-4 flex flex-col  p-4 rounded-2xl" key={place._id}>
-                        <Link to ={'/account/places/'+place._id} className="flex cursor-pointer gap-4 bg-fade bg-gray-100 p-4 rounded-2xl" key={place._id}>
+                        <Link to ={'/account/places/'+place._id} className="flex cursor-pointer gap-4 shadow-2xl bg-gray-50 p-4 rounded-2xl" key={place._id}>
                             <div className="flex w-32 h-32 aspect-square object-cover bg-gray-300 grow shrink-0">
                                
                                {/* <div> */}
@@ -61,7 +61,12 @@ export default function Places() {
                             <p className="text-sm mt-2">{place.description}</p>
                             </div>
                         </Link>
-                            <button className="flex text-center bg-red-500 w-20 text-white px-4 py-2 rounded mt-2" onClick={()=>handleDelete(place._id)}>Delete</button>
+                        <div className="flex justify-end">
+
+                        <button className="flex  text-center bg-red-500 w-20 text-white px-4 py-2 rounded mt-2" onClick={()=>handleDelete(place._id)}>Delete</button>
+
+                        </div>
+                            
                         </div>
 
                     ))}

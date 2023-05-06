@@ -23,12 +23,12 @@ const PlacePage = () => {
  
 
     return (
-    <div className='ml-24 mr-24 shadow-2xl mt-1  -mx-8 px-8 pt-4 '>
+    <div className='ml-[11%] mr-[11%] shadow-2xl mt-1  -mx-8 px-8 pt-4 '>
       {/* Place page:{id} */}
-      <h1 className='mt-4 text-3xl  -mx-8 px-8 py-4 '>{place.title}</h1>
+      <h1 className='mt-4 text-3xl  font-no -mx-8 px-8 py-4 '>{place.title}</h1>
       
      <div className='flex justify-between p-4 '>
-      <AddressLink >{place.address}
+      <AddressLink  >{place.address}
      </AddressLink >
       <ShareButton />
       </div>
@@ -42,16 +42,19 @@ const PlacePage = () => {
         <div className='my-4'>
           <hr />
           <br />
-          <h2 className='font-semibold text-2xl'>Description</h2>
+          <h2 className='font-medium font-no text-2xl'>Description</h2>
           <br />
+          <div className='font-no font-normal'>
           {place.description}
+          </div>
+          
         </div>
           {/* <h2 className='font-semibold text-2xl'>CHeck</h2> */}
       <hr />
       <br />
-        <b>Check In : {place.checkIn}</b><br/>
-        <b>Check Out : {place.checkOut}</b><br/>
-     <b>Max number of guests : {place.maxGuests}<br/></b> 
+        <b className='font-no font-medium'>Check In : {place.checkIn}</b><br/>
+        <b className='font-no font-medium' >Check Out : {place.checkOut}</b><br/>
+     <b className='font-no font-medium' >Max number of guests : {place.maxGuests}<br/></b> 
       {/* {place.description} */}
       </div>
       
@@ -63,8 +66,8 @@ const PlacePage = () => {
 
             <div className='bg-white -mx-8 px-8 py-4 mt-8 border-t'>
 
-      <div ><h2 className='font-semibold text-2xl'>Extra info</h2></div>
-      <div className='text-sm text-gray-700 leading-4 mb-4 mt-2'>{place.extraInfo}</div>
+      <div ><h2 className='font-medium font-no text-2xl'>Extra info</h2></div>
+      <div className='text-sm text-gray-700 font-no leading-4 mb-4 mt-2'>{place.extraInfo}</div>
             </div>
       
 

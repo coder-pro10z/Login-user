@@ -14,8 +14,8 @@ const Header = () => {
 
     <div className='item-center p-2  border-b-2 rounded-xl shadow-lg '>
       
-        <header className='flex  space-between justify-between pos-sticky pb-2'>
-          <a href='/' className=' flex item-center gap-1 '>
+        <header className='flex  space-between justify-between pos-sticky pb-1'>
+          <a href='/' className=' flex item-center pt-2 gap-1 '>
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
@@ -28,22 +28,21 @@ const Header = () => {
           
           
 
-        <Link to={user ? "/account" : "/login"} className='flex item-center justify-center gap-2 border pl-2 pr-2 rounded-full px-1 py-1 shadow-lg mr-4'>
+        <Link to={user ? "/account" : "/login"} className='flex item-center justify-center gap-2 border pt-2 pl-2 pr-2 rounded-full  shadow-lg mr-4'>
 
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+          <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 flex justify-center ">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
          
-          <div className='text-white bg-gray-500 rounded-full p-1 border border-gray-500 overflow-hidden  justify-center'>
-
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 relative top-1">
-              <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" />
+          <div className='text-white bg-gray-200 rounded-full  border border-gray-500 overflow-hidden  justify-center h-6'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 relative" >
+              <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd"  />
             </svg>
 
           </div>
           {!!user && (
 
-            <div>
+            <div className='font-no flex justify-center'>
               {user.name}
             </div>
           )}

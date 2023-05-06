@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily:{
         rubik:['Rubik', 'sans-serif'],
+        no:['Poppins'],
        },
       colors:{
         primary:'rgb(1, 122, 243)',

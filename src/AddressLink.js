@@ -5,7 +5,7 @@ const AddressLink = ({children},className=null) => {
   if(className){
     className='mx-3 my-2 block '
   }
-  className+='flex gap-1 font-semibold underline'
+  className+='flex gap-1 font-no font-medium underline'
     return (
     <div>
        <a className={className} target='_blank' href={'https://maps.google.com/?q='+children}>

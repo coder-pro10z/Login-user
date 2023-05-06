@@ -40,15 +40,18 @@ const PlacePage = () => {
         
       <div>
         <div className='my-4'>
+          <hr />
+          <br />
           <h2 className='font-semibold text-2xl'>Description</h2>
+          <br />
           {place.description}
         </div>
           {/* <h2 className='font-semibold text-2xl'>CHeck</h2> */}
-      
-      
+      <hr />
+      <br />
         <b>Check In : {place.checkIn}</b><br/>
         <b>Check Out : {place.checkOut}</b><br/>
-      Max number of guests : {place.maxGuests}<br/>
+     <b>Max number of guests : {place.maxGuests}<br/></b> 
       {/* {place.description} */}
       </div>
       

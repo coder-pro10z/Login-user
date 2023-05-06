@@ -100,6 +100,7 @@ export default function PlacesForm(){
     return(
         <div>
             <AccountNav/>
+            <div className="shadow-lg p-9 m-10">
         <form onSubmit={savePlace}>
             {preInput('Title', 'Title for Your Place. should be short and precise for advertisement')}
             <input className="inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1" type="text" value={title}
@@ -171,12 +172,13 @@ export default function PlacesForm(){
 
             </div>
 
-            <div>
-                <button className="primary mt-4">Save</button>
+            <div className=" flex justify-center p-5">
+                <button className="h-10 px-5 rounded-xl text-primary-700 bg-primary ">Save</button>
             </div>
 
   
         </form>
+    </div>
     </div>
 
     );

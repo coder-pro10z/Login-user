@@ -92,7 +92,7 @@ function Login() {
             type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             </div>
 
-            <button className='flex text-center bg-primary text-black text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center rounded-xl' type="submit">Login</button>
+            <button className='flex text-center bg-primary text-white text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center rounded-xl' type="submit">Login</button>
             
           </form>
           

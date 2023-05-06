@@ -100,7 +100,7 @@ export default function PlacesForm(){
     return(
         <div>
             <AccountNav/>
-            <div className="shadow-lg p-9 m-10">
+            <div className="shadow-lg p-9 ml-20 mr-20">
         <form onSubmit={savePlace}>
             {preInput('Title', 'Title for Your Place. should be short and precise for advertisement')}
             <input className="inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1" type="text" value={title}
@@ -112,6 +112,7 @@ export default function PlacesForm(){
             <input type="text" className='inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1'
                 value={address}
                 onChange={ev => setAddress(ev.target.value)} placeholder=" Address"  required/>
+                
             
             
             {preInput('Photos', 'The more the better')}

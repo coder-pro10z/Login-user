@@ -27,7 +27,7 @@ useEffect(()=>{
       {places.length>0 && places.map(place=>(
         <Link to={'/place/'+place._id} >
 
-          <div className='max-w-sm h-[100%] rounded-lg shadow-lg'>
+          <div className='max-w-sm h-[105%] rounded-lg shadow-lg'>
            <div key={place.photos} className='rounded-t-md flex'>
             {place.photos?.[0] && (
               <img key={place.photos} className='rounded-t-md object-cover aspect-square ' src={'http://localhost:5000/uploads/'+place.photos?.[0]} alt=""/>
@@ -35,8 +35,8 @@ useEffect(()=>{
             </div>
             <h3 className='font-bold ml-2 min-h-20'> {place.address}</h3>
             <h2 className='text-sm text-gray-500 pl-2 p-1'>{place.title}</h2>  
-            <div className='mt-1 pb-2 '>
-              <span className='font-bold ml-2  '> ₹{place.price} </span>per night
+            <div className=' relative '>
+              <span className=' bottom-0 left-0 font-bold ml-2    '> ₹{place.price} per night</span>
             </div>
           
           </div>

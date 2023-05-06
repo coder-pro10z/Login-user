@@ -12,12 +12,12 @@ const Header = () => {
 
   return (
 
-    <div className=' border-b-2 rounded-2xl  '>
+    <div className='item-center p-2  border-b-2 rounded-xl shadow-lg '>
       
-        <header className='flex p-1 space-between justify-between pos-sticky pb-4'>
-          <a href='/' className='p-1.5 flex item-center gap-1 '>
+        <header className='flex  space-between justify-between pos-sticky pb-2'>
+          <a href='/' className=' flex item-center gap-1 '>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
             </svg>
 
@@ -28,7 +28,7 @@ const Header = () => {
           
           
 
-        <Link to={user ? "/account" : "/login"} className='flex item-center justify-center gap-2 border border-gray-300 rounded-full px-2 py-2 mr-4'>
+        <Link to={user ? "/account" : "/login"} className='flex item-center justify-center gap-2 border pl-2 pr-2 rounded-full px-1 py-1 shadow-lg mr-4'>
 
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />

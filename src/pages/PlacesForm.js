@@ -120,11 +120,20 @@ export default function PlacesForm(){
 <PhotoUploader addedPhotos={addedPhotos
 } onChange={setAddedPhotos}/>
 
+    <div className="">
+
             {preInput('Description', 'Description for Your Place. should be short and precise for advertisement ')}
-
-
             <textarea className="border-2 border-gray-300 rounded-md p-8 w-80 mt-2" value={description}
-                onChange={ev => setDescription(ev.target.value)}></textarea>
+    onChange={ev => setDescription(ev.target.value)}></textarea>
+
+{preInput('Extra Info', 'House Rules, etc')}
+
+<textarea className="border-2 border-gray-300 rounded-md w-80 p-8 " value={extraInfo}
+    onChange={ev => setExtraInfo(ev.target.value)} />
+
+    </div>
+
+
 
             {/* Perks */}
 
@@ -134,10 +143,7 @@ export default function PlacesForm(){
                 <Perks selected={perks} onChange={setPerks} />
             </div>
             {/* Extra Info  */}
-            {preInput('Extra Info', 'House Rules, etc')}
-
-            <textarea className="border-2 border-gray-300 rounded-md w-80 p-8 " value={extraInfo}
-                onChange={ev => setExtraInfo(ev.target.value)} />
+           
             {preInput('Check In & Out times ', 'Select all the perks of your place')}
 
 

@@ -64,15 +64,15 @@ function Login() {
     <>
     <div><h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 font-rubik">Log in to your account</h2></div>
 
-<div className='ml-12 max-w-7xl shadow-lg flex justify-center '>
-<div className="min-h-screen flex items-center justify-center bg-gray-00 sm:px-5 lg:px-7">  
+<div className='ml-12 max-w-7xl  flex justify-center '>
+<div className="shadow-lg flex justify-center p-9">  
 
-<div >
+<div className='m-3 pt-12'>
 <Lottie options={newOptions} height={360} width={460} />
 </div>
 
 
-    <div className="max-w-md w-full space-y-5">
+    <div className="max-w-md w-full space-y-8">
         
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
           <Lottie options={defaultOptions} height={200} width={270}/> 
@@ -92,7 +92,7 @@ function Login() {
             type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             </div>
 
-            <button className='flex text-center bg-gray-300 text-black text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center rounded-xl' type="submit">Login</button>
+            <button className='flex text-center bg-primary text-white text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center rounded-xl' type="submit">Login</button>
             
           </form>
           

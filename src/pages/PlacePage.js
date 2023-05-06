@@ -23,7 +23,7 @@ const PlacePage = () => {
  
 
     return (
-    <div className='mt-4  -mx-8 px-8 pt-8'>
+    <div className='ml-24 mr-24 shadow-2xl mt-1  -mx-8 px-8 pt-4 '>
       {/* Place page:{id} */}
       <h1 className='mt-4 text-3xl  -mx-8 px-8 py-4 '>{place.title}</h1>
       

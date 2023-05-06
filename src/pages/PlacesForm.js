@@ -100,7 +100,7 @@ export default function PlacesForm(){
     return(
         <div>
             <AccountNav/>
-            <div className="shadow-lg p-9 m-10">
+            <div className="shadow-lg p-9 ml-20 mr-20">
         <form onSubmit={savePlace}>
             {preInput('Title', 'Title for Your Place. should be short and precise for advertisement')}
             <input className="inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1" type="text" value={title}
@@ -112,6 +112,7 @@ export default function PlacesForm(){
             <input type="text" className='inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1'
                 value={address}
                 onChange={ev => setAddress(ev.target.value)} placeholder=" Address"  required/>
+                
             
             
             {preInput('Photos', 'The more the better')}
@@ -120,11 +121,20 @@ export default function PlacesForm(){
 <PhotoUploader addedPhotos={addedPhotos
 } onChange={setAddedPhotos}/>
 
+    <div className="">
+
             {preInput('Description', 'Description for Your Place. should be short and precise for advertisement ')}
-
-
             <textarea className="border-2 border-gray-300 rounded-md p-8 w-80 mt-2" value={description}
-                onChange={ev => setDescription(ev.target.value)}></textarea>
+    onChange={ev => setDescription(ev.target.value)}></textarea>
+
+{preInput('Extra Info', 'House Rules, etc')}
+
+<textarea className="border-2 border-gray-300 rounded-md w-80 p-8 " value={extraInfo}
+    onChange={ev => setExtraInfo(ev.target.value)} />
+
+    </div>
+
+
 
             {/* Perks */}
 
@@ -134,10 +144,7 @@ export default function PlacesForm(){
                 <Perks selected={perks} onChange={setPerks} />
             </div>
             {/* Extra Info  */}
-            {preInput('Extra Info', 'House Rules, etc')}
-
-            <textarea className="border-2 border-gray-300 rounded-md w-80 p-8 " value={extraInfo}
-                onChange={ev => setExtraInfo(ev.target.value)} />
+           
             {preInput('Check In & Out times ', 'Select all the perks of your place')}
 
 

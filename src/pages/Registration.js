@@ -8,7 +8,7 @@ function Registration() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [phone, setPhone] = useState(0);
   const handleNameChange = event => {
     setName(event.target.value);
   }
@@ -20,6 +20,11 @@ function Registration() {
   const handlePasswordChange = event => {
     setPassword(event.target.value);
   }
+
+  const handlePhoneChange = event => {
+    setPhone(event.target.value);
+  } 
+
   const defaultOptions={
     loop:true,
     autoplay:true,
@@ -35,7 +40,8 @@ function Registration() {
     const userData = {
       name,
       email,
-      password
+      password,
+      phone
     }
 
     axios.post('http://localhost:5000/api/register', userData)
@@ -72,7 +78,11 @@ function Registration() {
       <label  className="block text-gray-700 font-bold mb-2" >Password</label>
       <input className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
        type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+     <label  className="block text-gray-700 font-bold mb-2" >Phone Number</label>
+      <input className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+       type="number" placeholder="Phone Number" value={phone} onChange={handlePhoneChange} />
       <button type="submit" className='flex bg-primary rounded-xl text-white text-black text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center'>Register</button>
+        
     </form>
    
     <div className='py-2 text-center text-gray-500'>Already have an account? <Link className='underline text-black' to="/login">Login</Link>

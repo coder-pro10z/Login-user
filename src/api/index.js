@@ -36,6 +36,9 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
   password: String,
+  image: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Image'},
   phone :{ type: Number, unique: true },
   uid:{ type: Number, unique: true }
 });
@@ -257,9 +260,24 @@ app.delete('/places/:id', (req, res) => {
 });
 // user profile photo
 
-// const updateUserProfile= asyncHandler(async (req,res)=>{
+//SEARCH
 
-// })
+// GET all places or search by address
+app.get('/places', async (req, res) => {
+  try {
+    const { search } = req.query;
+    const query = search ? { address: { $regex: search, $options: 'i' } } : {};
+    const places = await Place.find(query);
+    res.json(places);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+
+
 
 
 // Start server

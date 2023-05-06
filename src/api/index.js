@@ -35,7 +35,9 @@ mongoose.connect(process.env.MONGO_URL)
 const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
-  password: String
+  password: String,
+  phone :{ type: Number, unique: true },
+  uid:{ type: Number, unique: true }
 });
 const User = mongoose.model('User', userSchema);
 

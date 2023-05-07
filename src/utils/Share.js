@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import animationData from './icons/share.json'
+import animationData from '../icons/share.json'
 
 function ShareButton() {
   const share = async () => {

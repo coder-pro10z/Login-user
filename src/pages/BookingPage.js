@@ -3,10 +3,10 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import AddressLink from '../AddressLink'
-import PlaceGallery from '../PlaceGallery'
-import BookingDates from '../BookingDates'
-import MetaMask from '../MetaMask'
+import AddressLink from '../utils/AddressLink'
+import PlaceGallery from '../utils/PlaceGallery'
+import BookingDates from '../utils/BookingDates'
+import MetaMask from '../utils/MetaMask'
 import StripeCheckout from 'react-stripe-checkout';
 
 const BookingPage = () => {

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AccountNav from "./AccountNav";
 import axios from "axios"
 import {useEffect, useState } from "react";
-import PlaceImg from "../PlaceImg";
+import PlaceImg from "../utils/PlaceImg";
 
 export default function Places() {
 

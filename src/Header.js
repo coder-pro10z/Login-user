@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from './UserContext'
-import SearchBar from './pages/SearchBar'
+
 
 const Header = () => {
   const { user } = useContext(UserContext)
 
   return (
-    <div className='item-center p-2 border-b-2 rounded-xl shadow-lg'>
+    <div className='item-center p-[0.5%] border-b-2  rounded-xl shadow-lg'>
       <header className='flex space-between justify-between pos-sticky pb-1'>
         <a href='/' className='flex item-center pt-2 gap-1'>
           <svg

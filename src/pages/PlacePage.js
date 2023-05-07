@@ -6,6 +6,8 @@ import PlaceGallery from '../PlaceGallery'
 import BookingWidget from './BookingWidget'
 import ShareButton from '../Share'
 
+
+
 const PlacePage = () => {
     const {id}=useParams()
     const [place,setPlace]=useState(null)
@@ -30,6 +32,7 @@ const PlacePage = () => {
      <div className='flex justify-between p-4 '>
       <AddressLink  >{place.address}
      </AddressLink >
+     {/* <button> <View/> </button> */}
       <ShareButton />
       </div>
       

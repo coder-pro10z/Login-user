@@ -62,22 +62,25 @@ function Login() {
 
   return (
     <>
-    <div><h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 font-rubik">Log in to your account</h2></div>
 
-<div className='ml-12 max-w-7xl  flex justify-center '>
+    
+    <div>
+      <h2 className="mt-[6%] text-center text-3xl font-extrabold text-gray-900 font-no  ">Log in to your account</h2></div>
+
+<div className='ml-[9%] max-w-7xl  flex justify-center '>
 <div className="shadow-lg flex justify-center p-9">  
 
-<div className='m-3 pt-12'>
-<Lottie options={newOptions} height={360} width={460} />
+<div className='mx-3 pt-5'>
+<Lottie options={newOptions} height="70%" width="100%" />
 </div>
 
 
     <div className="max-w-md w-full space-y-8">
         
-          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
-          <Lottie options={defaultOptions} height={200} width={270}/> 
+          <form className="bg-white font-no shadow-md rounded px-8 pt-4 pb-4" onSubmit={handleSubmit}>
+          <Lottie options={defaultOptions} height="70%" width="50%"/> 
             <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2" >Email</label> 
+            <label className="block text-gray-700 font-bold mb-2 font-no" >Email</label> 
             <input type="email" placeholder="Email" value={email} 
             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             onChange={handleEmailChange} />
@@ -92,15 +95,15 @@ function Login() {
             type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             </div>
 
-            <button className='flex text-center bg-primary text-white text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center rounded-xl' type="submit">Login</button>
+            <button className='flex text-center bg-primary text-white text-bold min-w-screen mt-1 px-2 py-1  justify-center items-center rounded-lg' type="submit">Login</button>
             
           </form>
           
-          <div className='py-2 text-center text-gray-500'>Don't have an account yet? <Link className='underline text-black' to="/register">Register Now</Link>
+          <div className='pb-4 text-center text-gray-500'>Don't have an account yet? <Link className='underline text-black' to="/register">Register Now</Link>
         </div>
-
-        </div>    </div>
-</div>
+      </div>   
+    </div>
+  </div>
 </>
   );
 }

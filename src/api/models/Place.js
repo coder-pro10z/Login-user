@@ -14,6 +14,9 @@ const placeSchema= new mongoose.Schema({
     checkOut : Number,
     maxGuests : Number,
     price : Number,
+    ownerName:String,
+    ownerEmail:String,
+    ownerPhone:Number,
 
 
 });

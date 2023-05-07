@@ -20,6 +20,7 @@ export default function PlacesForm(){
     const [maxGuests, setMaxGuests] = useState(1);
     const [redirect,setRedirect]=useState(false);
     const [price,setPrice]=useState(400);
+    const [ownerPhone,setOwnerPhone]=useState(0);
 
     useEffect(()=>{
         if(!id){
@@ -38,6 +39,7 @@ export default function PlacesForm(){
         setCheckIn(data.checkIn)
         setMaxGuests(data.maxGuests)
         setPrice(data.price)
+        setOwnerPhone(data.phone)
 
     })
     },[id])
@@ -176,7 +178,12 @@ export default function PlacesForm(){
                         value={price}
                         onChange={ev => setPrice(ev.target.value)}  required></input>
                 </div>
-
+                <div>
+                    <h3>Contact Number</h3>
+                    <input className="inline-flex border-2 border-gray-300 rounded-md mt-1 mb-1 p-1" type='number'
+                        value={ownerPhone}
+                        onChange={ev => setOwnerPhone(ev.target.value)}  required></input>
+                </div>
             </div>
 
             <div className=" flex justify-center p-5">

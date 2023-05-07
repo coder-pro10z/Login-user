@@ -128,7 +128,7 @@ app.post('/api/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
     //tokens and cookies work 
- jwt.sign({email:userDoc.email , id:userDoc._id },jwtSecret,{},(err,token)=>{
+ jwt.sign({email:userDoc.email,name:userDoc.name , id:userDoc._id },jwtSecret,{},(err,token)=>{
    if(err) throw err;
    res.cookie('token', token).status(200).json(userDoc);
  })
@@ -241,14 +241,17 @@ app.post('/places', async (req, res) => {
     checkOut,
     maxGuests,
     price,
+    ownerName,
+    ownerEmail,
+    ownerPhone,
   } = req.body;
   try {
     const userData = await getUserDataFromReq(req);
     const placeDoc = await Place.create({
       owner: userData.id,
-      // ownerName: userData.name,
-      // ownerEmail:userData.email,
-      // ownerPhone:userData.Phone,
+      ownerName: userData.name,
+      ownerEmail,
+      ownerPhone,
       title,
       address,
       photos: addedPhotos,
@@ -313,7 +316,10 @@ app.put('/places/',async (req,res)=>{
   const {token} = req.cookies;
   const {id, title,address,addedPhotos,
     description,perks,extraInfo,
-    checkIn,checkOut,maxGuests,price,}=req.body;
+    checkIn,checkOut,maxGuests,price,
+    ownerName,
+    ownerEmail,
+    ownerPhone,}=req.body;
     
   jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
     if(err) throw err;
@@ -323,6 +329,9 @@ app.put('/places/',async (req,res)=>{
         title,address,
       photos:addedPhotos,description,perks,
       extraInfo,checkIn,checkOut,maxGuests,price,
+    ownerName,
+    ownerEmail,
+    ownerPhone,
       })
       await placeDoc.save();
       //This line was responsible for crashing nodemon because there were 2 simultaneous call back were made with the help of response (res).
@@ -342,9 +351,15 @@ app.post('/bookings',async (req,res)=>{
 
   const {
     place,checkIn,checkOut,numberOfGuests,name,phone,price,
+    ownerName,
+    ownerEmail,
+    ownerPhone,
   } = req.body;
   Booking.create({
     place,checkIn,checkOut,numberOfGuests,name,phone,price,user:userData.id,
+    ownerName:userData.name,
+    ownerEmail:userData.email,
+    ownerPhone:userData.phone,
   }).then((doc) => {
     res.json(doc);
   }).catch((err)=>{

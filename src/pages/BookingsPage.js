@@ -2,9 +2,9 @@ import React from 'react'
 import AccountNav from './AccountNav'
 import {useEffect,useState} from 'react'
 import axios from 'axios'
-import PlaceImg from '../PlaceImg'
+import PlaceImg from '../utils/PlaceImg'
 import {Link} from 'react-router-dom'
-import BookingDates from '../BookingDates'
+import BookingDates from '../utils/BookingDates'
 
 const BookingsPage = () => {
     const [bookings,setBookings] = useState([])

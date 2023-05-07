@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link,Navigate,useParams } from 'react-router-dom';
 import Signup from '../icons/Signup.json'
 import Lottie from 'react-lottie';
-import PhotoUploader from "../PhotoUploader";
+import PhotoUploader from "../utils/PhotoUploader";
 
 function Registration() {
   const {id} = useParams()

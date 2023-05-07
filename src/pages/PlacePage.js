@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import {useParams} from "react-router-dom"
-import AddressLink from '../AddressLink'
-import PlaceGallery from '../PlaceGallery'
+import AddressLink from '../utils/AddressLink'
+import PlaceGallery from '../utils/PlaceGallery'
 import BookingWidget from './BookingWidget'
-import ShareButton from '../Share'
+import ShareButton from '../utils/Share'
 
 
 

@@ -28,18 +28,21 @@ const BookingPage = () => {
   if (!booking) return ''
 
   return (
-    <div className='my-8'>
+    <div className='my-8 font-no shadow-2xl ml-[10%] mr-[10%] pl-[3%] pr-[3%] pt-[1%] pb-[1%]'>
       {/* single booking : {id} */}
-      <h1 className='text-3xl'>{booking.place.title}</h1>
-      <AddressLink className='my-2 block'>{booking.place.address}</ AddressLink>
+      <h1 className='text-3xl pl-[5.9%]'>{booking.place.title}</h1>
+      <div className='pl-[4.5%] pt-[1%]'>
+      <AddressLink className='my-2 block '>{booking.place.address}</ AddressLink>
+      </div>
+      
       <div className='flex'>
-      <div className='shadow-md p-6 my-6 rounded-2xl flex items-center justify-between max-w-xl overflow-hidden shadow-lg'>
-        <div>
-          <h2 className='text-2xl mb-4 '>Your booking information :</h2>
+      <div className='shadow-md p-6 my-6 rounded-2xl flex items-center justify-between max-w-xl overflow-hidden shadow-2xl ml-[5.9%]'>
+        <div >
+          <h2 className='text-2xl mb-4  '>Your booking information :</h2>
           <BookingDates booking={booking}></BookingDates>
         </div>
-        <div className='bg-primary p-6 text-white rounded-2xl'>
-          <div>
+        <div className='bg-primary p-[2%] text-white rounded-2xl shadow-xl  '>
+          <div className='flex justify-center'>
             Total Price
           </div>
 
@@ -76,9 +79,11 @@ const BookingPage = () => {
     email={booking.user.email}
   />
 </div> */}
-<div className='text-2xl' id='price'>
-  ₹ {booking.price}
+<div className='text-md font-no' id='price'>
+  <div className='flex justify-center'> ₹ {booking.price} </div>
+  
   <StripeCheckout
+   
     amount={booking.price * 100}
     currency="INR"
     stripeKey="pk_test_51MqgBHSEV1mMy0RjXJqoHnqWdBDTheCr0J8zM4sUXoSETH7Xm8Ie06wcbjgbVdMGUILZgwfRxKsfhnPBz2AlFBi900406qyH3Z"

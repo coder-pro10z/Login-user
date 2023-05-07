@@ -15,12 +15,17 @@ const BookingsPage = () => {
     },[])
   return (
     <div>
-      <AccountNav/>
-      <div>
+      <div className='shadow-lg rounded-2xl ml-[29%] mr-[29%] mt-[1%]'>  <AccountNav/> </div>
+     
+      
+      <div className='font-no shadow-lg ml-[16%] mr-[16%] p-[1%]'>
+      <div className='font-no flex justify-center text-3xl font-medium'>
+      Your Bookings:
+      </div>
         
         {bookings?.length > 0 && bookings.map(booking => (
-            <Link to= {'/account/bookings/'+booking._id} className='flex gap-4 m-4 bg-gray-200 rounded-2xl overflow-hidden'>
-                <div className=''>
+            <Link to= {'/account/bookings/'+booking._id} className='flex gap-4 m-4 shadow-lg p-[0.5%] rounded-2xl overflow-hidden'>
+                <div className='rounded-2xl '>
                     <PlaceImg place={booking.place}/>
                 </div>
                 

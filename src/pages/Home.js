@@ -25,10 +25,10 @@ const Home = () => {
   return (
     <>
       <div className='ml-20 mr-20 mt-12'>
-        <div className='flex mb-6'>
+        <div className='flex mb-6 font-no '>
           <input
             type='text'
-            placeholder='Search by address...'
+            placeholder='Search your Destination...'
             className='p-2 border border-gray-400 rounded-lg w-full'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}

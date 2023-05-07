@@ -28,7 +28,7 @@ export default function Places() {
  return (
 
         <div>
-            <AccountNav/>
+            <div className='shadow-lg rounded-2xl ml-[29%] mr-[29%] mt-[1%]'>  <AccountNav/> </div>
            
                 <div className="text-center cursor-pointer">
                     List of all Added Places 

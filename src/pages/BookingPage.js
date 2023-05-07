@@ -7,6 +7,8 @@ import AddressLink from '../AddressLink'
 import PlaceGallery from '../PlaceGallery'
 import BookingDates from '../BookingDates'
 import MetaMask from '../MetaMask'
+import StripeCheckout from 'react-stripe-checkout';
+
 const BookingPage = () => {
   const { id } = useParams()
   const [booking, setBooking] = useState(null)
@@ -41,9 +43,71 @@ const BookingPage = () => {
             Total Price
           </div>
 
-          <div className='text-2xl'>
+          {/* <div className='text-2xl' id='price'>
             ₹ {booking.price}
-          </div>
+          </div> */}
+  {/* <div className='text-2xl' id='price'>
+  ₹ {booking.price}
+  <StripeCheckout
+    amount={booking.price * 100}
+    currency="INR"
+    stripeKey="pk_test_51MqgBHSEV1mMy0RjXJqoHnqWdBDTheCr0J8zM4sUXoSETH7Xm8Ie06wcbjgbVdMGUILZgwfRxKsfhnPBz2AlFBi900406qyH3Z"
+    name={booking.place.title}
+    description="Booking Payment"
+    token={(token) => {
+      console.log(token);
+      axios.post('/api/payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          booking,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          // Handle success or error
+        })
+        .catch((error) => console.error(error));
+    }}
+    email={booking.user.email}
+  />
+</div> */}
+<div className='text-2xl' id='price'>
+  ₹ {booking.price}
+  <StripeCheckout
+    amount={booking.price * 100}
+    currency="INR"
+    stripeKey="pk_test_51MqgBHSEV1mMy0RjXJqoHnqWdBDTheCr0J8zM4sUXoSETH7Xm8Ie06wcbjgbVdMGUILZgwfRxKsfhnPBz2AlFBi900406qyH3Z"
+    name={booking.place.title}
+    description="Booking Payment"
+    token={(token) => {
+      console.log(token);
+      axios.post('/api/payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          booking,
+          unit_amount: booking.price * 100,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          // Handle success or error
+        })
+        .catch((error) => console.error(error));
+    }}
+    email={booking.user.email}
+  />
+</div>
+
         </div>
       </div>
       <MetaMask />

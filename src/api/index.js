@@ -13,6 +13,10 @@ const fs=require('fs');
 const { Router } = require('express');
 const app = express();
 require('dotenv').config()
+//added stripe
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+
 mongoose.set('strictQuery', false)
 
 // // Connect to MongoDB database
@@ -156,21 +160,80 @@ res.json(uploadedFiles);
 })
 //request and respones function for places
 
-app.post('/places', (req,res)=>{
-  const {token}=req.cookies;
-  const {title,address,addedPhotos,
-description,perks,extraInfo,
-checkIn,checkOut,maxGuests,price,}=req.body;
-  jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
-    if(err) throw err;
-    const placeDoc=await Place.create({
-owner:userData.id,title,address,
-photos:addedPhotos,description,perks,
-extraInfo,checkIn,checkOut,maxGuests,price
+// app.post('/places', (req,res)=>{
+//   const {token}=req.cookies;
+//   const {title,address,addedPhotos,
+// description,perks,extraInfo,
+// checkIn,checkOut,maxGuests,price,}=req.body;
+//   jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
+//     if(err) throw err;
+//     const placeDoc=await Place.create({
+// owner:userData.id,title,address,
+// photos:addedPhotos,description,perks,
+// extraInfo,checkIn,checkOut,maxGuests,price
+//     });
+//     res.json(placeDoc);
+//   });
+// });
+
+//Update the 'Places' route
+app.post('/places', async (req, res) => {
+  const { token } = req.cookies;
+  const {
+    title,
+    address,
+    addedPhotos,
+    description,
+    perks,
+    extraInfo,
+    checkIn,
+    checkOut,
+    maxGuests,
+    price,
+  } = req.body;
+  try {
+    const userData = await getUserDataFromReq(req);
+    const placeDoc = await Place.create({
+      owner: userData.id,
+      title,
+      address,
+      photos: addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+      price,
     });
-    res.json(placeDoc);
-  });
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: placeDoc.title,
+            },
+            unit_amount: placeDoc.price * 100,
+          },
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: 'http://localhost:3000/success',
+      cancel_url: 'http://localhost:3000/cancel',
+    });
+    res.json({ id: session.id });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error creating place' });
+  }
 });
+
+
+
+
 
 app.get('/user-places',(req,res)=>{
   // if(err) throw err;
@@ -276,6 +339,167 @@ app.get('/places', async (req, res) => {
 });
 
 
+//Create a new route to create a Stripe checkout session. In this route, you can create a new Checkout session object using the stripe.checkout.sessions.create() method.
+// app.post('/create-checkout-session', async (req, res) => {
+//   const { amount, currency } = req.body;
+//   try {
+//     const session = await stripe.checkout.sessions.create({
+//       payment_method_types: ['card'],
+//       line_items: [
+//         {
+//           price_data: {
+//             currency:'INR',
+//             product_data: {
+//               name: 'Product Name',
+//             },
+//             unit_amount: amount,
+//           },
+//           quantity: 1,
+//         },
+//       ],
+//       mode: 'payment',
+//       success_url: 'http://localhost:3000/success',
+//       cancel_url: 'http://localhost:3000/cancel',
+//     });
+//     res.json({ id: session.id });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Error creating checkout session' });
+//   }
+// });
+
+app.post('/create-checkout-session', async (req, res) => {
+  const { amount, currency } = req.body;
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: 'INR',
+            product_data: {
+              name: 'Product Name',
+            },
+            unit_amount: amount,
+          },
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: 'http://localhost:3000/success',
+      cancel_url: 'http://localhost:3000/cancel',
+    });
+    res.json({ id: session.id });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error creating checkout session' });
+  }
+});
+
+
+//success
+app.get('/success', async (req, res) => {
+  const { session_id } = req.query;
+  try {
+    const session = await stripe.checkout.sessions.retrieve(session_id);
+    await stripe.charges.create({
+      amount: session.amount_total,
+      currency: session.currency,
+      source: session.payment_intent,
+    });
+    res.json({ message: 'Payment successful' });
+  } catch (error) {
+    console.log(error);
+    res.json({ message: 'Payment failed' });
+  }
+});
+
+app.get('/cancel', (req, res) => {
+  res.json({ message: 'Payment cancelled' });
+});
+
+
+//payment
+// app.post('/api/payment', async (req, res) => {
+//   const { token, booking } = req.body;
+
+//   try {
+//     const charge = await stripe.charges.create({
+//       amount: booking.price * 100,
+//       currency: 'INR',
+//       source: token.id,
+//       description: `Booking Payment for ${booking.place.title}`,
+//     });
+//     console.log(charge);
+//     // Handle success
+//     res.json({ success: true });
+//   } catch (error) {
+//     console.error(error);
+//     // Handle error
+//     res.json({ success: false, error: error.message });
+//   }
+// });
+app.post('/api/payment', async (req, res) => {
+  try {
+    const { token, booking,unit_amount } = req.body;
+
+    // Set your Stripe secret key
+    const stripe = require('stripe')('sk_test_your_secret_key');
+
+    // Create a charge
+    const charge = await stripe.charges.create({
+      amount: unit_amount, // Stripe requires the amount in cents
+      currency: 'INR',
+      source: token.id,
+      description: 'Booking Payment',
+      metadata: {
+        booking_id: booking.id,
+      },
+    });
+
+    // Handle success
+    console.log('Charge created:', charge.id);
+    res.status(200).send({ success: true, chargeId: charge.id });
+  } catch (error) {
+    // Handle error
+    console.error('Error creating charge:', error.message);
+    res.status(500).send({ success: false, error: error.message });
+  }
+});
+
+
+//payment-process
+app.post('/api/process-payment', async (req, res) => {
+  const { token, booking } = req.body;
+
+  try {
+    // Use Stripe API to charge the user's card
+    const charge = await stripe.charges.create({
+      amount: booking.price * 100, // in cents
+      currency: "INR",
+      source: token.id,
+      description: "Booking Payment"
+    });
+
+    // Save the booking to the database
+    const newBooking = new Booking({
+      place: booking.place._id,
+      title:booking.place.title,
+      user: booking.user._id,
+      name: booking.user.name,
+      price: booking.price,
+      checkIn: booking.checkIn,
+      checkOut: booking.checkOut
+    });
+    await newBooking.save();
+
+    // Return success response to the client
+    res.status(200).json({ message: 'Payment successful' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error processing payment' });
+  }
+});
 
 
 

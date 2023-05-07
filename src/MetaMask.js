@@ -55,10 +55,10 @@ const MetaMask = () => {
     <div  className='p-3 m-4 rounded-2xl max-w-xl shadow-lg'> 
     <h1 className='flex justify-center text-2xl'> MetaMask Connection </h1>
     <div className='flex '>
-    <button onClick={connectButton} className='bg-primary rounded-xl p-3 m-2 flex justify-center'>conncet</button>
+    <button onClick={connectButton} className='bg-primary rounded-xl p-3 m-2 flex justify-center'>Connect</button>
     <form onSubmit={sendTransaction}>
           
-          <button className='bg-primary rounded-xl p-3 m-2 flex justify-center'>submit</button>
+          <button className='bg-primary rounded-xl p-3 m-2 flex justify-center'>Submit</button>
         </form>
         </div>
     <h2>Address: {defaultAccount}</h2>

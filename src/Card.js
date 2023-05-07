@@ -48,9 +48,9 @@ const Card = () => {
             <input type="email" name="email" value={editedUser.email} onChange={handleInputChange} />
           </label>
           <label>
-            Aadhar No.:
+            Aadhar Number (Cannot be changed)
             
-            <input type="text" name="uid" value={editedUser.uid} onChange={handleInputChange} pattern="[0-9]{12}" required title="Please enter a valid 12-digit Aadhar number." />
+            <input type="text" name="uid" value={editedUser.uid} pattern="[0-9]{12}" required title="Please enter a valid 12-digit Aadhar number." />
 
           </label>
           <label>

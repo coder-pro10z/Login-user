@@ -35,16 +35,26 @@ mongoose.connect(process.env.MONGO_URL)
     }) 
   }
 
+//const upload
+const upload = multer({ dest: 'uploads/' });
+
+
 // Define user schema
 const userSchema = new mongoose.Schema({
-  name: String,
-  email: { type: String, unique: true },
+  name: {
+    type: String,
+    required: true
+  },
+  email: { type: String, unique: true,
+    required: true},
   password: String,
-  image: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Image'},
-  phone :{ type: Number, unique: true },
-  uid:{ type: Number, unique: true }
+  profilePic :{
+    type:[String],
+  },   
+  phone :{ type: Number, unique: true,
+    required: true },
+  uid:{ type: Number, unique: true,
+    required: true}
 });
 const User = mongoose.model('User', userSchema);
 
@@ -63,15 +73,37 @@ res.json("test ok")})
 
 
 // Registration route
+// app.post('/api/register', async (req, res) => {
+//   const { name, email, password,phone,uid } = req.body;
+
+//   try {
+//     const hashedPassword = await bcrypt.hash(password, 10);
+//     const user = new User({
+//       name,
+//       email,
+//       password: hashedPassword,
+//       phone,
+//       uid,
+//     });
+//     await user.save();
+//     res.status(201).json({ message: 'User registered successfully' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Error registering user' });
+//   }
+// });
 app.post('/api/register', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, phone, uid, profilePic } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({
       name,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      phone,
+      uid,
+      profilePic,
     });
     await user.save();
     res.status(201).json({ message: 'User registered successfully' });
@@ -80,6 +112,7 @@ app.post('/api/register', async (req, res) => {
     res.status(500).json({ message: 'Error registering user' });
   }
 });
+
 
 // Login route
 app.post('/api/login', async (req, res) => {
@@ -105,6 +138,24 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ message: 'Error logging in' });
   } 
 });
+
+//add image to profile using multer
+app.post('/api/upload', upload.single('profile'), async (req, res) => {
+  const file = req.file;
+  const newName = 'Photo' + Date.now() + '.' + file.originalname.split('.').pop();
+  const newLocation = './uploads/' + newName;
+
+  try {
+    fs.renameSync(file.path, newLocation);
+    res.status(200).json({ success: true, path: newName });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: 'Error uploading image' });
+  }
+});
+
+
+
 //profile  name displaying 
 
 app.get('/profile', (req,res)=>{
@@ -113,10 +164,10 @@ app.get('/profile', (req,res)=>{
 if (token) {
 jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
   if(err) throw err;
-  const {name,email,_id}=
+  const {name,email,_id,phone,profilePic,uid}=
    await User.findById(userData.id);
   // const userDoc
-  res.json({name,email,_id});
+  res.json({name,email,_id,phone,profilePic,uid});
 })
   }
   else{
@@ -195,6 +246,9 @@ app.post('/places', async (req, res) => {
     const userData = await getUserDataFromReq(req);
     const placeDoc = await Place.create({
       owner: userData.id,
+      // ownerName: userData.name,
+      // ownerEmail:userData.email,
+      // ownerPhone:userData.Phone,
       title,
       address,
       photos: addedPhotos,

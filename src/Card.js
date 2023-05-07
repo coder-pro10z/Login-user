@@ -34,7 +34,7 @@ const Card = () => {
 
   if (isEditing) {
     return (
-      <div className="bg-gray-300 rounded-md m-7 p-5 flex flex-col items-center">
+      <div className="shadow-lg font-no rounded-md m-7 p-5 flex flex-col items-center">
         <div>
           <img src={image ? URL.createObjectURL(image) : user.profilePicture} alt="Profile picture" className="rounded-full h-20 w-20" />
         </div>
@@ -71,7 +71,7 @@ const Card = () => {
   }
 
   return (
-    <div className="bg-gray-300 rounded-md m-7 p-5 flex flex-col items-center">
+    <div className="shadow-lg font-no rounded-md m-[6%] border p-[6%] flex flex-col items-center">
       <div>
         <img src={user.profilePicture} alt="Profile picture" className="rounded-full h-20 w-20" />
       </div>

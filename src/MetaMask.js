@@ -52,17 +52,17 @@ const MetaMask = () => {
         }
 
   return (
-    <div  className='p-3 m-4 rounded-2xl max-w-xl shadow-lg'> 
+    <div  className='p-3 m-4 rounded-2xl max-w-xl shadow-lg font-no'> 
     <h1 className='flex justify-center text-2xl'> MetaMask Connection </h1>
-    <div className='flex '>
+    <div className='flex font-no ml-[7.9%] mr-[5.9%]'>
     <button onClick={connectButton} className='bg-primary rounded-xl p-3 m-2 flex justify-center'>Connect</button>
     <form onSubmit={sendTransaction}>
           
           <button className='bg-primary rounded-xl p-3 m-2 flex justify-center'>Submit</button>
         </form>
         </div>
-    <h2>Address: {defaultAccount}</h2>
-    <h2>Balance: ETH  {userBalance}</h2>
+    <h2 className='font-no'>Address: {defaultAccount}</h2>
+    <h2 className='font-no'>Balance: ETH  {userBalance}</h2>
         
         
 

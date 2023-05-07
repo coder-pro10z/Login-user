@@ -24,12 +24,13 @@ const Home = () => {
 
   return (
     <>
-      <div className='ml-20 mr-20 mt-12'>
+      <div className='ml-[12%] mr-[12%]  mb-10'>
         <div className='flex mb-6 font-no '>
           <input
             type='text'
             placeholder='Search your Destination...'
-            className='p-2 border border-gray-400 rounded-lg w-full'
+            className='p-2  
+            shadow-lg rounded-lg w-full'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />

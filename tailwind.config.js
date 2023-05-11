@@ -8,8 +8,10 @@ module.exports = {
         no:['Poppins'],
        },
       colors:{
-        primary:'rgb(1, 122, 243)',
-        fade:'#AFD3E2',
+        primary:'#272343',
+        new:'rgba(227, 246, 245, 0.4)',
+        three:'#bae8e8',
+
         
       },
       

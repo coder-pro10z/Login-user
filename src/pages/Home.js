@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='ml-[12%] mr-[12%]  mb-10'>
+      <div className='ml-[12%] mr-[12%] mb-10'>
         <div className='flex mb-6 font-no '>
           <input
             type='text'
@@ -35,7 +35,7 @@ const Home = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button
-            className='ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg'
+            className=' px-2 py-1 bg-blue-500 text-white rounded-lg'
             onClick={handleSearch}
           >
             Search
@@ -45,13 +45,13 @@ const Home = () => {
         <div className='grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-1'>
           {displayPlaces.map((place) => (
             <Link to={`/place/${place._id}`} key={place._id}>
-              <div className='relative max-w-sm h-[107%] rounded-lg shadow-lg mb-2 '>
+              <div className='relative max-w-sm h-[107%] rounded-xl shadow-lg mb-2 '>
                 <div>
 
-                <div className='rounded-t-md flex'>
+                <div className='rounded-t-xl  flex'>
                     {place.photos?.[0] && (
                       <img
-                      className='rounded-t-md object-cover aspect-square'
+                      className='rounded-t-xl object-cover aspect-square'
                       src={`http://localhost:5000/uploads/${place.photos?.[0]}`}
                       alt=''
                       />

@@ -71,11 +71,14 @@ const Card = () => {
   }
 
   return (
-    <div className="shadow-lg font-no rounded-md m-[6%] border p-[6%] flex flex-col items-center">
+    <div className="shadow-lg font-no rounded-md m-[7%] border p-[16%] flex flex-col items-center bg-primary">
       <div>
         <img src={user.profilePicture} alt="Profile picture" className="rounded-full h-20 w-20" />
       </div>
-      <span>Name: {user.name}</span>
+      <div className='bg-gray-300'>
+   lable
+      </div>
+      
       <span>Email: {user.email}</span>
       <span>Aadhar No.: {user.uid}</span>
       <button className='flex gap-1 justify-center bg-primary rounded-md p-3 align-middle' onClick={handleEditClick}>Edit  

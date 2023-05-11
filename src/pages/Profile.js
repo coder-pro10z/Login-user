@@ -43,6 +43,7 @@ export default function Profile(){
      <div>
          <div className='shadow-lg rounded-2xl ml-[29%] mr-[29%] mt-[1%] backdrop-blur-md'>  <AccountNav/> </div>
         {subpage === 'profile' && (
+
             <div className="text-center max-w-sm mx-auto mt-2 text-gray font-no  shadow-2xl backdrop-blur-md pb-[1%] rounded-xl" >
                 Logged in as {user.name} ({user.email}) <br/>
                 <button onClick={logout} className="bg-primary text-center px-4 py-2 mt-4 text-white font-no rounded-md">Logout</button>

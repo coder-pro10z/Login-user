@@ -52,9 +52,9 @@ const MetaMask = () => {
         }
 
   return (
-    <div  className='p-3 m-4 rounded-2xl max-w-xl shadow-lg font-no'> 
-    <h1 className='flex justify-center text-2xl'> MetaMask Connection </h1>
-    <div className='flex font-no ml-[7.9%] mr-[5.9%]'>
+    <div  className='p-[1%] m-[3%] rounded-2xl  shadow-lg font-no'> 
+    <h1 className='flex justify-center text-xl'> Crypto Payment </h1>
+    <div className='flex font-no ml-[.9%] mr-[5.3%]'>
     <button onClick={connectButton} className='bg-primary rounded-xl p-3 m-2 flex justify-center'>Connect</button>
     <form onSubmit={sendTransaction}>
           

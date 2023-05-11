@@ -16,6 +16,9 @@ function Registration() {
   const [uidValid, setUidValid] = useState(false);
   const [profilePic, setProfilePic] = useState([]);
   const [redirect,setRedirect] = useState(false);
+  const[passwordError, setPasswordError]=useState('');
+  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.{8,})/;
+  
 
 //   axios.get('/users/' + id).then(response => { setProfilePic(data.profilePic) })
 // },[id])
@@ -41,7 +44,12 @@ function Registration() {
   }
 
   const handlePasswordChange = event => {
-    setPassword(event.target.value);
+    const newPassword=event.target.value;
+    
+    
+    setPassword(newPassword);
+    setPasswordError(passwordRegex.test(newPassword) ? '' : 'Password must of 8 letters Abc@123');
+    
   }
 
   // const handlePhoneChange = event => {
@@ -52,6 +60,7 @@ function Registration() {
     const isValid = validatePhone(phoneNumber);
     setPhone(phoneNumber);
     setPhoneValid(isValid);
+    
   };
 
   // const handleSubmit = (event) => {
@@ -124,13 +133,13 @@ function Registration() {
     return  <Navigate to={'/login'} />
   } 
   return (
-<div className="min-h-screen flex items-center justify-center sm:px-5 lg:px-7"> 
-<div className='shadow-lg flex justify-center p-9' >
-<div className='m-3 pt-12 '>
+<div className="min-h-screen flex  items-center font-no justify-center sm:px-5 lg:px-7"> 
+<div className='shadow-lg flex justify-center  p-9 bg-new' >
+<div className='m-3 pt-[25%]'>
 <Lottie options={defaultOptions} height={300} width={300}/>
 </div>    
        
-    <div className="max-w-md w-full space-y-8">
+    <div className="max-w-md w-full space-y-8 ">
         <div><h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900"> Register your account</h2></div>
         
 
@@ -147,21 +156,26 @@ function Registration() {
       <label  className="block text-gray-700 font-bold mb-2" >Password</label>
         <input className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
         type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+        {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
      <label className="block text-gray-700 font-bold mb-2">Phone Number</label>
         <input
+        
           className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
             phoneValid ? 'border-green-500' : 'border-red-500'
           } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
+          
+          
           type="number"
           placeholder="XXXXX-XXXXX"
           value={phone}
           onChange={handlePhoneChange}
         />
         {!phoneValid && (
-          <p className="text-red-500 text-xs italic">Please enter a valid 10-digit phone number.</p>
+          <p  className="text-red-500 text-xs italic">Please enter a valid 10-digit phone number.</p>
         )}
      <label className="block text-gray-700 font-bold mb-2" >Aadhar Number</label>
-        <input
+        <input 
+        maxLength={12}
         className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
         uidValid ? 'border-green-500' : 'border-red-500'
         } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}

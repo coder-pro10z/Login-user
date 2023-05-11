@@ -38,7 +38,7 @@ const BookingPage = () => {
       <div className='flex'>
       <div className='shadow-md p-6 my-6 rounded-2xl flex items-center justify-between max-w-xl overflow-hidden shadow-2xl ml-[5.9%]'>
         <div >
-          <h2 className='text-2xl mb-4  '>Your booking information :</h2>
+          <h2 className='text-xl mb-4  '>Your booking information :</h2>
           <BookingDates booking={booking}></BookingDates>
         </div>
         <div className='bg-primary p-[2%] text-white rounded-2xl shadow-xl  '>
@@ -115,8 +115,9 @@ const BookingPage = () => {
 
         </div>
       </div>
-      <MetaMask />
+      
       </div>
+      <MetaMask />
       <PlaceGallery place={booking.place}></PlaceGallery>
 
     </div>

@@ -30,8 +30,13 @@ const PlacePage = () => {
       <h1 className='mt-4 text-3xl  font-no -mx-8 px-8 py-4 '>{place.title}</h1>
       
      <div className='flex justify-between p-4 '>
-      <AddressLink  >{place.address}
+      <AddressLink  >{place.address} 
      </AddressLink >
+      {/* {place.owner}<br/> */}
+      {/* {place.ownerEmail}<br/> */}
+      {/* {place.ownerphone} */}
+
+
      {/* <button> <View/> </button> */}
       <ShareButton />
       </div>
@@ -52,6 +57,15 @@ const PlacePage = () => {
           </div>
           
         </div>
+        {place.ownerEmail && place.ownerPhone ? (
+  <div>
+    <h2 className="font-medium font-no text-2xl">Contact Details</h2>
+    <p>{place.owner}</p>
+    <p>{place.ownerEmail}</p>
+    <p>{place.ownerPhone}</p>
+  </div>
+) : null}
+
           {/* <h2 className='font-semibold text-2xl'>CHeck</h2> */}
       <hr />
       <br />

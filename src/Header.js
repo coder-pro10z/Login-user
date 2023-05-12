@@ -7,7 +7,7 @@ const Header = () => {
   const { user } = useContext(UserContext)
 
   return (
-    <div className='item-center  p-[0.5%] border-b-2  rounded-b-xl shadow-lg'>
+    <div className='item-center p-[0.5%] border-b-2  rounded-b-xl shadow-lg'>
       <header className='flex space-between justify-between pos-sticky pb-1'>
         <a href='/' className='flex item-center pt-2 gap-1'>
           <svg
@@ -33,7 +33,7 @@ const Header = () => {
 
         <Link
           to={user ? '/account' : '/login'}
-          className='flex item-center justify-center gap-2  pt-2 pl-2 pr-2  rounded-full shadow-lg mr-4'
+          className='flex item-center  justify-center gap-2  pt-2 pl-2 pr-2  rounded-full shadow-lg mr-4'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

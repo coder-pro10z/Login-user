@@ -30,7 +30,7 @@ const Home = () => {
             type='text'
             placeholder='Search your Destination...'
             className='p-2  
-            shadow-lg rounded-lg w-full'
+            shadow-lg rounded-lg w-full '
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />

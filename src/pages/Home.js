@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import search from '../icons/search.png'
+
 
 const Home = () => {
   const [places, setPlaces] = useState([]);
@@ -24,34 +26,36 @@ const Home = () => {
 
   return (
     <>
-      <div className='ml-[12%] mr-[12%] mb-10'>
-        <div className='flex mb-6 font-no '>
+      <div className='ml-[12%] mr-[12%] mb-[2%]'>
+        <div className='flex mb-[5%] font-no ml-[19%] mr-[19%] '>
+          
           <input
             type='text'
             placeholder='Search your Destination...'
-            className='p-2  
+            className='pt-[2%]  
             shadow-lg rounded-lg w-full '
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          
           <button
-            className=' px-2 py-1 bg-blue-500 text-white rounded-lg'
+            className=' pl-[2.5%] pr-[2.5%] bg-blue-500 text-white rounded-full'
             onClick={handleSearch}
           >
-            Search
+            <img src={search} className='w-4' />
           </button>
         </div>
 
-        <div className='grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-1'>
+        <div className='grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5  '>
           {displayPlaces.map((place) => (
             <Link to={`/place/${place._id}`} key={place._id}>
-              <div className='relative max-w-sm h-[107%] rounded-xl shadow-lg mb-2 '>
-                <div>
+              <div className='relative max-w-sm h-[107%] rounded-xl shadow-lg mb-1 hover:scale-105 transform transition duration-500 '>
+                <div >
 
-                <div className='rounded-t-xl  flex'>
+                <div className='rounded-t-xl  flex '>
                     {place.photos?.[0] && (
                       <img
-                      className='rounded-t-xl object-cover aspect-square'
+                      className='rounded-xl object-cover aspect-square'
                       src={`http://localhost:5000/uploads/${place.photos?.[0]}`}
                       alt=''
                       />
@@ -66,7 +70,7 @@ const Home = () => {
                     {place.title}
                   </h2>
             
-                  <span className='font-no absolute bottom-0 left-0 ml-2 pt-2 pb-1'>
+                  <span className='font-no absolute bottom-0 left-0 ml-2  pt-2 pb-1'>
                     ₹{place.price} per night
                   </span>
               

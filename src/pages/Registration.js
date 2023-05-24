@@ -3,7 +3,10 @@ import axios from 'axios';
 import { Link,Navigate,useParams } from 'react-router-dom';
 import Signup from '../icons/Signup.json'
 import Lottie from 'react-lottie';
-import PhotoUploader from "../utils/PhotoUploader";
+// import PhotoUploader from "../utils/PhotoUploader";
+import GoogleAuth from '../utils/GoogleAuth';
+import { gapi } from 'gapi-script';
+
 
 function Registration() {
   const {id} = useParams()
@@ -27,6 +30,7 @@ function Registration() {
   const validatePhone = (phoneNumber) => {
     return phoneRegex.test(phoneNumber);
   };
+  const cliedtId="761436610898-77uigb3sm4bjar7q9siedm247v89gc4m.apps.googleusercontent.com"
 
   //regex for aadhar no. validation
   const uidRegex = /^[1-9][0-9]{11}$/;
@@ -91,6 +95,15 @@ function Registration() {
       console.log(err);
     });
   }, [id]);
+  useEffect(()=>{
+ function start(){
+  gapi.client.init({
+    clientId:cliedtId,
+    scope:""
+  })
+ };
+ gapi.load('client:auth2',start);
+  });
 
   const defaultOptions={
     loop:true,
@@ -195,6 +208,9 @@ function Registration() {
     </form>
    
     <div className='py-2 text-center text-gray-500'>Already have an account? <Link className='underline text-black' to="/login">Login</Link>
+    <div>
+      <GoogleAuth/>
+    </div>
         </div>
     </div>
     </div> 

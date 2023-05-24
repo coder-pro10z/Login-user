@@ -5,6 +5,7 @@ import { UserContext } from '../UserContext';
 import Lottie from 'react-lottie';
 import Log from '../icons/Login.json'
 import Window from '../icons/Login_window.json'
+import GoogleAuth from '../utils/GoogleAuth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -98,6 +99,7 @@ function Login() {
             <button className='flex text-center bg-primary text-white text-bold min-w-screen mt-1 px-2 py-1  justify-center items-center rounded-lg' type="submit">Login</button>
             
           </form>
+          <GoogleAuth/>
           
           <div className='pb-4 text-center text-gray-500'>Don't have an account yet? <Link className='underline text-black' to="/register">Register Now</Link>
         </div>

@@ -570,6 +570,28 @@ app.post('/api/process-payment', async (req, res) => {
   }
 });
 
+//google auth
+const { OAuth2Client } = require('google-auth-library');
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
+app.post('register', async (req, res) => {
+  const { tokenId } = req.body;
+
+  try {
+    const ticket = await client.verifyIdToken({
+      idToken: tokenId,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    const { name, email } = ticket.getPayload();
+    // Create the user in your database with the retrieved name and email
+    // Redirect user to desired page after successful sign-up
+    res.status(200).json({ message: 'Google sign-up successful' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Google sign-up failed' });
+  }
+});
+
 
 
 

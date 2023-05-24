@@ -6,8 +6,8 @@ function ShareButton() {
   const share = async () => {
     try {
       await navigator.share({
-        title: 'Example Title',
-        text: 'Example Text',
+        title: 'view this',
+        text: 'this house',
         url: 'https://www.example.com',
       });
     } catch (error) {
@@ -25,7 +25,7 @@ function ShareButton() {
 
   return (
     <button className='rounded-full p-1 bg-white box-border 'onClick={share}>
-        <Lottie options={defaultOptions} height={40}/>
+        <Lottie options={defaultOptions} height={50}/>
       
     </button>
   );

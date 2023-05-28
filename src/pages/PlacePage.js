@@ -5,6 +5,7 @@ import AddressLink from '../utils/AddressLink'
 import PlaceGallery from '../utils/PlaceGallery'
 import BookingWidget from './BookingWidget'
 import ShareButton from '../utils/Share'
+// import Pano from '../utils/View'
 
 
 
@@ -38,6 +39,7 @@ const PlacePage = () => {
 
 
      {/* <button> <View/> </button> */}
+      
       <ShareButton />
       </div>
       
@@ -87,6 +89,9 @@ const PlacePage = () => {
       <div className='text-sm text-gray-700 font-no leading-4 mb-4 mt-2'>{place.extraInfo}</div>
             </div>
       
+            <div >
+        {/* <Pano/> */}
+      </div>
 
   </div>
   )

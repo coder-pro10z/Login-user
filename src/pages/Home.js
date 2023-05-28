@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import search from '../icons/search.png'
-
+import Pano from '../utils/View'
 
 const Home = () => {
   const [places, setPlaces] = useState([]);
@@ -79,6 +79,10 @@ const Home = () => {
             </Link>
           ))}
         </div>
+      </div>
+      <div>
+          <Pano/>
+
       </div>
     </>
   );

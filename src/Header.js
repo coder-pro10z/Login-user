@@ -7,12 +7,12 @@ const Header = () => {
   const { user } = useContext(UserContext)
 
   return (
-    <div className='item-center p-[0.5%] border-b-2  rounded-b-xl shadow-lg'>
-      <header className='flex space-between justify-between pos-sticky pb-1'>
-        <a href='/' className='flex item-center pt-2 gap-1'>
+    <div className='item-center bg-new p-[0.5%] border-b-2 rounded-b-xl shadow-lg'>
+      <header className='flex space-between  justify-between pos-sticky pb-1'>
+        <a href='/' className='flex item-center pt-2 gap-1 hover:translate-x-1 duration-500'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            fill='none'
+            fill='solid'
             viewBox='0 0 24 24'
             strokeWidth='1.5'
             stroke='currentColor'
@@ -33,7 +33,7 @@ const Header = () => {
 
         <Link
           to={user ? '/account' : '/login'}
-          className='flex item-center  justify-center gap-2  pt-2 pl-2 pr-2  rounded-full shadow-lg mr-4'
+          className='flex item-center  justify-center gap-2  pt-2 pl-2 pr-2 bg-white shadow-gray-400 rounded-full shadow-lg mr-4 hover:translate-x-0.5 duration-500'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -56,10 +56,12 @@ const Header = () => {
             </svg>
           </div>
 
-          {!!user && <div className='font-no flex justify-center'>{user.name}</div>}
+          {!!user && <div className='font-no flex justify-center '>{user.name}</div>}
         </Link>
       </header>
+      
     </div>
+
   )
 }
 

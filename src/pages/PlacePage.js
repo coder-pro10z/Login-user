@@ -28,19 +28,24 @@ const PlacePage = () => {
     return (
     <div className='ml-[11%] mr-[11%] shadow-2xl mt-1  -mx-8 px-8 pt-4 '>
       {/* Place page:{id} */}
-      <h1 className='mt-4 text-3xl  font-no -mx-8 px-8 py-4 '>{place.title}</h1>
+      <h1 className='mt-4 text-3xl  font-no mx-8 px-8 py-4 '>{place.title}</h1>
       
-     <div className='flex justify-between p-4 '>
+     <div className='flex justify-between p-3 ml-[3.2%] mr-[10%] '>
+      <div className='hover:scale-110 duration-700'>
       <AddressLink  >{place.address} 
      </AddressLink >
+      </div>
+      
       {/* {place.owner}<br/> */}
       {/* {place.ownerEmail}<br/> */}
       {/* {place.ownerphone} */}
 
 
      {/* <button> <View/> </button> */}
-      
+     
       <ShareButton />
+      
+     
       </div>
       
       <PlaceGallery place={place}/>

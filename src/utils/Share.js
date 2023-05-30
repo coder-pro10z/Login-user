@@ -24,7 +24,7 @@ function ShareButton() {
   };
 
   return (
-    <button className='rounded-full p-1 bg-white box-border 'onClick={share}>
+    <button className='rounded-full p-1 bg-white box-border hover:translate-x-1 duration-500 'onClick={share}>
         <Lottie options={defaultOptions} height={50}/>
       
     </button>

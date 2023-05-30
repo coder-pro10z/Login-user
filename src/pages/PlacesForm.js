@@ -102,7 +102,7 @@ export default function PlacesForm(){
     return(
         <div>
             <AccountNav/>
-            <div className="shadow-lg p-9 ml-20 mr-20">
+            <div className="shadow-lg  p-9 ml-[15%] mr-[15%]">
         <form onSubmit={savePlace}>
             {preInput('Title', 'Title for Your Place. should be short and precise for advertisement')}
             <input className="inline-flex border-2 border-gray-300 rounded-md w-100 min-w-full mt-1 p-1" type="text" value={title}

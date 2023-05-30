@@ -28,7 +28,7 @@ const GoogleAuth = () => {
   return (
     <div>Testing
         <GoogleLogin
-  clientId="YOUR_GOOGLE_CLIENT_ID"
+  clientId="761436610898-77uigb3sm4bjar7q9siedm247v89gc4m.apps.googleusercontent.com"
   buttonText="Sign up with Google"
   onSuccess={handleGoogleSuccess}
   onFailure={handleGoogleFailure}

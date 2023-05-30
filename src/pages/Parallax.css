@@ -1,0 +1,113 @@
+
+.animation, .animation_layer {
+	height: 1100px;
+  overflow: hidden;
+  
+
+ 
+}
+.animation::-webkit-scrollbar {
+  display: none;
+}
+.animation_layer{
+  opacity: 1;
+  transform: translateY(100px);
+}
+.bg-img{
+  width: 800px;
+  height: 00px;
+}
+
+/*  all the images using ids*/
+
+/* #bg {
+  background-image: url(./img/background.png);
+ 
+} */
+
+#mountain1 {
+  background-image: url(../img/mountain_1.png);
+  background-repeat: no-repeat;
+  display: flex;
+  background-size: 27%;
+  margin-top: 0%;
+  margin-bottom: 2px;
+  
+  background-position: right 1300px bottom 234px;
+}
+#mountain2 {
+  background-image: url(../img/mountain_2.png);
+    background-size: 29%;
+  background-repeat: no-repeat;
+  background-position:  left 354px   ;
+  width: 100%;
+  z-index: 3;
+}
+#mountain3 {
+  background-image: url(../img/mountain_3.png);
+  background-size: 29%;
+  background-repeat: no-repeat;
+  background-position: left 1300px  bottom 242px;
+}
+#mountain4 {
+  background-image: url(../img/mountain_4.png);
+  background-size: 59%;
+  background-repeat: no-repeat;
+  background-position: 39% ;
+  z-index: 2;
+}
+#mountain5 {
+  background-image: url(../img/mountain_5.png);
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: 200px bottom ;
+
+}
+
+#mountain7 {
+  background-image: url(../img/mountain_7.png);
+  background-repeat: no-repeat;
+  background-size: 18%;
+  background-position: right 1000px  bottom 242px;
+  z-index: 4;
+}
+#mountain8 {
+  background-image: url(../img/mountain_8.png);
+  background-repeat: no-repeat;
+  background-size: 18%;
+  background-position: left 1000px  bottom 242px;
+}
+
+#fog1{
+  background-image: url(../img/fog_1.png);
+  opacity: 0.2;
+  z-index: 1;
+}
+
+#fog6{
+  background-image: url(../img/fog_6.png);
+  z-index: 5;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: right 800px  bottom 442px;
+}
+
+.text-animation1{
+ color:#043020c0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+ font-size: 60px;
+
+}
+.head1{
+  color: #093827a7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  margin-top: 14%;
+}
+
+/* className='text-animation1'  */

@@ -6,11 +6,12 @@
 
  
 }
-/* .animation::-webkit-scrollbar {
+.animation::-webkit-scrollbar {
   display: none;
-} */
-.animation{
-  
+}
+.animation_layer{
+  opacity: 1;
+  transform: translateY(100px);
 }
 .bg-img{
   width: 800px;

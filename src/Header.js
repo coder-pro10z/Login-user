@@ -7,7 +7,7 @@ const Header = () => {
   const { user } = useContext(UserContext)
 
   return (
-    <div className='item-center bg-new p-[0.5%] border-b-2 rounded-b-xl shadow-lg'>
+    <div className='item-center bg-white pos-absolute z-10 p-[0.5%] border-b-2 rounded-b-xl shadow-xl'>
       <header className='flex space-between  justify-between pos-sticky pb-1'>
         <a href='/' className='flex item-center pt-2 gap-1 hover:translate-x-1 duration-500'>
           <svg

@@ -146,8 +146,8 @@ function Registration() {
     return  <Navigate to={'/login'} />
   } 
   return (
-<div className="min-h-screen flex  items-center font-no justify-center sm:px-5 lg:px-7"> 
-<div className='shadow-lg flex justify-center  p-9 bg-new' >
+<div className=" flex  items-center font-no justify-center sm:px-5 lg:px-7"> 
+<div className='shadow-lg w-[70%] flex justify-center  p-4 ' >
 <div className='m-3 pt-[25%]'>
 <Lottie options={defaultOptions} height={300} width={300}/>
 </div>    
@@ -203,12 +203,12 @@ function Registration() {
 
       {/* <label className="block text-gray-700 font-bold mb-2">Profile Picture</label> */}
       {/* <PhotoUploader profilePic={profilePic} onChange={setProfilePic}/> */}
-        <button type="submit" className='flex bg-primary rounded-xl text-white text-black text-bold min-w-screen mt-2 px-2 py-2  justify-center items-center'>Register</button>
+        <button type="submit" className='flex bg-primary rounded-xl text-white text-black text-bold  mt-2 px-[2%] py-2  justify-center items-center transform transition duration:700 hover:scale-105 hover:bg-three hover:text-primary'>Register</button>
         
     </form>
    
     <div className='py-2 text-center text-gray-500'>Already have an account? <Link className='underline text-black' to="/login">Login</Link>
-    <div>
+    <div className='mr-[2%]'>
       <GoogleAuth/>
     </div>
         </div>

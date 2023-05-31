@@ -55,10 +55,10 @@ const MetaMask = () => {
     <div  className='p-[1%] m-[3%] rounded-2xl  shadow-lg font-no'> 
     <h1 className='flex justify-center text-xl'> Crypto Payment </h1>
     <div className='flex font-no ml-[.9%] mr-[5.3%]'>
-    <button onClick={connectButton} className='bg-primary rounded-xl p-3 m-2 flex justify-center'>Connect</button>
+    <button onClick={connectButton} className='bg-primary rounded-xl p-3 m-2 flex justify-center transform transition duration:700 hover:scale-105 hover:bg-three hover:text-primary'>Connect</button>
     <form onSubmit={sendTransaction}>
           
-          <button className='bg-primary rounded-xl p-3 m-2 flex justify-center'>Submit</button>
+          <button className='bg-primary rounded-xl p-3 m-2 flex justify-center transform transition duration:700 hover:scale-105 hover:bg-three hover:text-primary'>Submit</button>
         </form>
         </div>
     <h2 className='font-no'>Address: {defaultAccount}</h2>

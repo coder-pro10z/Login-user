@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import Para from './Parallax';
+import React, { Suspense, useEffect, useState } from 'react';
+
+const Para =React.lazy(()=>import('./Parallax'))
 
 
 
@@ -38,7 +39,10 @@ const Home = () => {
     <>
    
    <div className='mt-[-2%] z-0'>
-          <Para  />
+    <Suspense fallback={<div>Loading........</div>}>
+    <Para  />
+    </Suspense>
+        
 
    </div>
    

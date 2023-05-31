@@ -46,7 +46,7 @@ export default function Profile(){
 
             <div className="text-center max-w-sm mx-auto mt-2 text-gray font-no  shadow-2xl backdrop-blur-md pb-[1%] rounded-xl" >
                 Logged in as {user.name} ({user.email}) <br/>
-                <button onClick={logout} className="bg-three text-center px-4 py-2 mt-4 text-white font-no rounded-md hover:scale-105 transform transition duration-500">Logout</button>
+                <button onClick={logout} className="bg-primary text-center px-4 py-2 mt-4 text-white font-no rounded-md transform transition duration:700 hover:scale-105 hover:bg-three hover:text-primary">Logout</button>
              </div>         )
                 }
 

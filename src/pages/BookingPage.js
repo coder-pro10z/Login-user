@@ -12,6 +12,8 @@ import StripeCheckout from 'react-stripe-checkout';
 const BookingPage = () => {
   const { id } = useParams()
   const [booking, setBooking] = useState(null)
+  
+  
   useEffect(() => {
     if (id) {
       axios.get('/bookings').then(response => {
@@ -41,7 +43,9 @@ const BookingPage = () => {
           <h2 className='text-xl mb-4  '>Your booking information :</h2>
           <BookingDates booking={booking}></BookingDates>
         </div>
-        <div className='bg-primary p-[2%] text-white rounded-2xl shadow-xl  '>
+      
+      </div>
+      <div className='bg-primary p-[2%] text-white rounded-2xl shadow-xl  '>
           <div className='flex justify-center'>
             Total Price
           </div>
@@ -114,8 +118,6 @@ const BookingPage = () => {
 </div>
 
         </div>
-      </div>
-      
       </div>
       <MetaMask />
       <PlaceGallery place={booking.place}></PlaceGallery>

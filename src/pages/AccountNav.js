@@ -11,7 +11,7 @@ export default function AccountNav(){
         
         let classes='inline-flex gap-1 pr-[4%] pl-[4%] rounded-full pt-[1.8%] pb-[1.8%] text-sm md:text-base  ';
         if (type===subpage ){
-            classes += ' bg-three text-white shadow-lg hover:scale-110 transform transition duration-500';
+            classes += ' bg-primary text-white shadow-lg hover:scale-110 transform transition duration-500 hover:bg-three hover:text-primary';
         }
         else{
             // classes += 'bg-gray-200';

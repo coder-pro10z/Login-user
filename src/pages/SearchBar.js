@@ -25,7 +25,7 @@ const SearchBar = ({ onSearch }) => {
         onKeyDown={handleKeyDown}
       />
       <button
-        className='ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg'
+        className='ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg transform transition duration:700 hover:scale-105 hover:bg-new hover:text-primary'
         onClick={handleSearch}
       >
         Search

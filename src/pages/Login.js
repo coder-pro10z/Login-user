@@ -96,7 +96,7 @@ function Login() {
             type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             </div>
 
-            <button className='flex text-center bg-primary text-white text-bold min-w-screen mt-1 px-2 py-1  justify-center items-center rounded-lg' type="submit">Login</button>
+            <button className='flex text-center bg-primary text-white text-bold min-w-screen mt-1 px-2 py-1  justify-center items-center rounded-lg  transform transition duration:700 hover:scale-105 hover:bg-three hover:text-primary' type="submit">Login</button>
             
           </form>
           <GoogleAuth/>

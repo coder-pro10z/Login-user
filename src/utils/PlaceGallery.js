@@ -8,7 +8,7 @@ const PlaceGallery = ({place}) => {
 
     if(showAllPhotos){
         return(
-        <div className='absolute inset-0 font-no  text-black min-h-screen '>
+        <div className='mt-[3%] absolute inset-0 font-no  text-black min-h-screen '>
   
           <div className=' backdrop-blur-lg	 p-12 grid gap-4'>
           

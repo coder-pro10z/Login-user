@@ -1,10 +1,7 @@
 
 .animation, .animation_layer {
 	height: 1100px;
-  overflow: hidden;
-  
 
- 
 }
 .animation::-webkit-scrollbar {
   display: none;

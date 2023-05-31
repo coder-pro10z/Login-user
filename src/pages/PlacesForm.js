@@ -101,7 +101,7 @@ export default function PlacesForm(){
 
     return(
         <div>
-            <AccountNav/>
+              <div className='shadow-lg rounded-2xl ml-[29%] mr-[29%] mt-[1%]'>  <AccountNav/> </div>
             <div className="shadow-lg  p-9 ml-[15%] mr-[15%]">
         <form onSubmit={savePlace}>
             {preInput('Title', 'Title for Your Place. should be short and precise for advertisement')}
@@ -123,16 +123,22 @@ export default function PlacesForm(){
 <PhotoUploader addedPhotos={addedPhotos
 } onChange={setAddedPhotos}/>
 
-    <div className="">
+    <div className="flex">
 
-            {preInput('Description', 'Description for Your Place. should be short and precise for advertisement ')}
+        <div>
+        {preInput('Description', 'Description for Your Place. should be short and precise for advertisement ')}
             <textarea className="border-2 border-gray-300 rounded-md p-8 w-80 mt-2" value={description}
     onChange={ev => setDescription(ev.target.value)}></textarea>
-
+        </div>
+<div className="mx-[12%]">
 {preInput('Extra Info', 'House Rules, etc')}
 
 <textarea className="border-2 border-gray-300 rounded-md w-80 p-8 " value={extraInfo}
     onChange={ev => setExtraInfo(ev.target.value)} />
+
+</div>
+            
+
 
     </div>
 
@@ -187,7 +193,7 @@ export default function PlacesForm(){
             </div>
 
             <div className=" flex justify-center p-5">
-                <button className="h-10 px-5 rounded-xl text-primary-700 bg-primary ">Save</button>
+                <button className="h-10 px-5 rounded-xl text-primary-700 bg-primary transform transition duration:700 hover:scale-105 hover:bg-three hover:text-primary ">Save</button>
             </div>
 
   

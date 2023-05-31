@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState , Suspense } from 'react';
 import bg from '../img/background.png'
 import { Link } from 'react-router-dom';
 import search from '../icons/search.png'
@@ -20,13 +20,13 @@ const Para = () => {
          axios.get(`/places?search=${searchTerm}`).then((response) => {
            setPlaces(response.data);
 
-           gsap.from('.animation_layer', {
-            duration: 0.5,
-            y: 100,
-            opacity: 0,
-            stagger: 0.2,
+          //  gsap.from('.animation_layer', {
+          //   duration: 1,
+          //   y: 100,
+          //   opacity: 0,
+          //   stagger: 0.2,
             
-          });
+          // });
           
          });
        }, [searchTerm]);
@@ -88,78 +88,83 @@ const Para = () => {
       <ParallaxLayer offset={0} speed={0.6} factor={0}>
              <div className='animation_layer parallax' id='mountain8'></div>
       </ParallaxLayer>
-  
-    <ParallaxLayer offset={0.85} factor={1} speed={0.7}>
-    <div className='' >
-      <div className='ml-[12%] mr-[12%] bg-white  shadow-xl pl-[2%] pr-[2%] pt-[1.5%] rounded-2xl'>
+      <Suspense fallback={<div>Loading........</div>}>
+
+      <ParallaxLayer offset={0.85} factor={1} speed={0.7}>
+     
+     <div  >
+       <div className='ml-[12%] mr-[12%] bg-white  shadow-xl pl-[2%] pr-[2%] pt-[1.5%] rounded-2xl'>
+         
+       
+         <div className='flex rounded-xl font-no ml-[19%] mr-[19%] transform transition duration-500 hover:translate-x-1.5 '>
+           
+           <input
+             type='text'
+             placeholder='Search your Destination...'
+             className='pt-[2%]  
+             shadow-lg rounded-lg w-full '
+             value={searchTerm}
+             onChange={(e) => setSearchTerm(e.target.value)}
+           />
+           
+           <button
+             className=' ml-[-2.5%] px-[2%] py-[2%] bg-blue-500 text-white rounded-full '
+             onClick={handleSearch}
+           >
+             <img src={search} className='w-4' />
+           </button>
+           
+         </div>
+ 
+           <div className='mt-[2%] '> 
+           <div className='grid gap-x-6 gap-y-14 grid-cols-2 md:grid-cols-3 lg:grid-cols-5  pb-[21%] '>
+           
+           {displayPlaces.map((place) => (
+             <Link to={`/place/${place._id}`} key={place._id}>
+               <div className='relative max-w-sm h-[107%] rounded-xl shadow-lg mb-1 hover:scale-105 transform transition duration-500 '>
+                 <div >
+ 
+                 <div className='rounded-t-xl  flex '>
+                     {place.photos?.[0] && (
+                       <img
+                       className='rounded-xl object-cover aspect-square'
+                       src={`http://localhost:5000/uploads/${place.photos?.[0]}`}
+                       alt=''
+                       />
+                       )}
+                   </div>
+                   
+                   <h3 className='font-no font-medium ml-2 min-h-20'>
+                     {place.address}
+                   </h3>
+                   
+                   <h2 className='text-sm font-no text-gray-500 pl-2 p-1'>
+                     {place.title}
+                   </h2>
+             
+                   <span className='font-no absolute bottom-0 left-0 ml-2  pt-2 pb-1'>
+                     ₹{place.price} per night
+                   </span>
+               
+                   </div>
+               </div>
+             </Link>
+           ))}
+         </div></div>
         
-      
-        <div className='flex rounded-xl font-no ml-[19%] mr-[19%] transform transition duration-500 hover:translate-x-1.5 '>
-          
-          <input
-            type='text'
-            placeholder='Search your Destination...'
-            className='pt-[2%]  
-            shadow-lg rounded-lg w-full '
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          
-          <button
-            className=' ml-[-2.5%] px-[2%] py-[2%] bg-blue-500 text-white rounded-full '
-            onClick={handleSearch}
-          >
-            <img src={search} className='w-4' />
-          </button>
-          
-        </div>
+        
+ 
+        
+         </div>
+       <div>
+       </div>
+           {/* <Pano/> */}
+ 
+       </div>
+     </ParallaxLayer>
 
-          <div className='mt-[2%] '> 
-          <div className='grid gap-x-6 gap-y-14 grid-cols-2 md:grid-cols-3 lg:grid-cols-5  pb-[21%] '>
-          
-          {displayPlaces.map((place) => (
-            <Link to={`/place/${place._id}`} key={place._id}>
-              <div className='relative max-w-sm h-[107%] rounded-xl shadow-lg mb-1 hover:scale-105 transform transition duration-500 '>
-                <div >
-
-                <div className='rounded-t-xl  flex '>
-                    {place.photos?.[0] && (
-                      <img
-                      className='rounded-xl object-cover aspect-square'
-                      src={`http://localhost:5000/uploads/${place.photos?.[0]}`}
-                      alt=''
-                      />
-                      )}
-                  </div>
-                  
-                  <h3 className='font-no font-medium ml-2 min-h-20'>
-                    {place.address}
-                  </h3>
-                  
-                  <h2 className='text-sm font-no text-gray-500 pl-2 p-1'>
-                    {place.title}
-                  </h2>
-            
-                  <span className='font-no absolute bottom-0 left-0 ml-2  pt-2 pb-1'>
-                    ₹{place.price} per night
-                  </span>
-              
-                  </div>
-              </div>
-            </Link>
-          ))}
-        </div></div>
-       
-       
-
-       
-        </div>
-      <div>
-      </div>
-          {/* <Pano/> */}
-
-      </div>
-    </ParallaxLayer>
+      </Suspense>
+   
     </Parallax>
 
   )

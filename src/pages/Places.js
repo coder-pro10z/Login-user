@@ -63,7 +63,7 @@ export default function Places() {
                         </Link>
                         <div className="flex justify-end">
 
-                        <button className="flex  text-center bg-red-500 w-20 text-white px-4 py-2 rounded mt-2" onClick={()=>handleDelete(place._id)}>Delete</button>
+                        <button className="flex  text-center bg-red-500 w-20 text-white px-4 py-2 rounded mt-2 transform transition duration:700 hover:scale-105 hover:bg-three hover:text-primary" onClick={()=>handleDelete(place._id)}>Delete</button>
 
                         </div>
                             

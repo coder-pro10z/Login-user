@@ -58,7 +58,7 @@ function selectAsMainPhoto(ev,filename){
 <div>
                             <input className='inline-flex border-2 border-gray-300 rounded-md w-5/6 max-w-full justify-between mt-1 p-1' value={photoLink}
                                 onChange={ev => setPhotoLink(ev.target.value)} placeholder=' Add photos using the link ...jpg '></input>
-                            <button onClick={addPhotoByLink} className=" mt-4 px-4 py-2 ml-2 bg-primary rounded-2xl">Add photo</button>
+                            <button onClick={addPhotoByLink} className=" mt-4 px-4 py-2 ml-2 bg-primary rounded-2xl hover:translate-x-1.5 duration-500 hover:scale-95 hover:bg-three hover:text-primary">Add photo</button>
                         </div>
                         <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                             {addedPhotos.length > 0 && addedPhotos.map(link => (

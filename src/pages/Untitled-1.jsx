@@ -61,7 +61,7 @@ export default function Places() {
                             <p className="text-sm mt-2">{place.description}</p>
                             </div>
                         </Link>
-                            <button className="flex text-center bg-red-500 text-white px-4 py-2 rounded mt-2" onClick={()=>handleDelete(place._id)}>Delete</button>
+                            <button className="flex text-center bg-red-500 text-white px-4 py-2 rounded mt-2 transform transition duration:700 hover:scale-105 hover:bg-three hover:text-primary" onClick={()=>handleDelete(place._id)}>Delete</button>
                         </div>
 
                     ))}

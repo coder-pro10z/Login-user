@@ -87,7 +87,7 @@ const BookingWidget = ({place}) => {
             )}
 
               </div>
-            <button onClick={bookThisPlace} className='primary font-no' >
+            <button onClick={bookThisPlace} className='primary font-no  duration:700 hover:scale-105 hover:bg-three hover:text-primary' >
               Book this place 
               {numberOfNights>0 && (
                 <span className='font-no'> ₹{numberOfNights * place.price}</span>

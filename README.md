@@ -1,6 +1,6 @@
 
 ```
-RentIt(publishing+demo)
+RentIt(publishing+demo video)
 ├─ client
 │  ├─ package-lock.json
 │  ├─ package.json
